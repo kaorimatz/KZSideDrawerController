@@ -28,8 +28,8 @@ sideDrawerController.rightViewController = UIViewController()
 ### Opening and Closing a Drawer
 
 ```swift
-sideDrawerController.openDrawer(side: .Left, animated: true, completions: nil)
-sideDrawerController.closeDrawer(side: .Right, animated: true, completions: nil)
+sideDrawerController.openDrawer(side: .Left, animated: true, completion: nil)
+sideDrawerController.closeDrawer(side: .Right, animated: true, completion: nil)
 ```
 
 ### Responding to Side Drawer Controller Events
