@@ -1,0 +1,981 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		04CC29065AD2A7ABD3C0C8DA39C0F85B /* KZSideDrawerController-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 66A17EA450E5E162AE2C70D70A6DFFD8 /* KZSideDrawerController-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0BD65B53FDBDB8675B16F309A810C150 /* ALView+PureLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F6990C47F02B6691DD4DA9D4504A36B /* ALView+PureLayout.m */; };
+		0D69D4AA7DDCC6F7460E01BFC9E813BC /* PureLayout-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 808D9E17BE044F47037C6ABD6F65EE32 /* PureLayout-dummy.m */; };
+		11440453AE436B6856168211A60B05F7 /* PureLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 261FA9EFC65F5CA2F5CE7AF0D3ACE209 /* PureLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2FC50BC0857DBEBDBD202FBCBA0B6E54 /* PureLayout-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 6EFEA95188E08BEB23065B2AB052E7BC /* PureLayout-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3D26D5A0D166E49406DE9122C2346684 /* NSLayoutConstraint+PureLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 62FD488738DACC6BD28A4B8007AC9E22 /* NSLayoutConstraint+PureLayout.m */; };
+		4ADE0FE88CF47AD551EDCE13569A2EFD /* NSArray+PureLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = D87500AA33CA4A933595B88AD6CA26C8 /* NSArray+PureLayout.m */; };
+		716A56993FB59FF543653BA13DA8A56F /* KZSideDrawerContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B443F88CFE8AC1B3457DDBDD9D62425 /* KZSideDrawerContainerView.swift */; };
+		89D0DDBAA844BB1E05FECEB56F53A31F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
+		90B3A4E758B13E566C268D8BF11644C6 /* NSArray+PureLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 256CB866D56B919DA6C9ABF2C32B4D37 /* NSArray+PureLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		91491743F473E08A46737E41B85B5179 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
+		9651B4BAC831265FBD2062E104C0EA1D /* Pods-KZSideDrawerController_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = BC865655649747E90D9B323808B40EFD /* Pods-KZSideDrawerController_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		96FCF641ABA16F37D7C8416A99AF94EA /* KZSideDrawerController-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E2327EA2894AC7A68959A2287B4CD364 /* KZSideDrawerController-dummy.m */; };
+		9CC96236C3B67276339D4CCDE7DD6C46 /* KZSideDrawerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA85D2D92CF8965772C132D00FD6F96 /* KZSideDrawerController.swift */; };
+		AF84CE5E1F74301C8526FEFB2284D5C3 /* Pods-KZSideDrawerController_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4125D7BB00676898B1EDE57967826A1C /* Pods-KZSideDrawerController_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C872E96BBA6ACC21A2B7F762B35FE010 /* Pods-KZSideDrawerController_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F7C5018AD72BAA6C2A5DCF54F375140C /* Pods-KZSideDrawerController_Example-dummy.m */; };
+		D3A03E48A0F69EDB195A65DB2E23547D /* Pods-KZSideDrawerController_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 77632D9CB6FB35531CF251B91EED12C0 /* Pods-KZSideDrawerController_Tests-dummy.m */; };
+		D911C597DB26AE1732EE1A12C38B29AA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
+		DD0026FD79178F59E730DDE2CAFB0ECA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
+		F1351BF919F3383028A6BE4F95F75039 /* ALView+PureLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = F3D3F05D324772E907DB1D4DA2C89AA2 /* ALView+PureLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F3086EB43C8C30C1328598F3D4E511B7 /* PureLayoutDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B859CA7D3A83073EE3A0EFE2138F31B /* PureLayoutDefines.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F6B0966B4718B026ED529398A4AE9F43 /* PureLayout+Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = AA654F86E857710B01965E96AC15F25C /* PureLayout+Internal.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F8A1CEE9155F464347D2669D50A28767 /* NSLayoutConstraint+PureLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F7D472071E15F7DC98E66B5980E1549 /* NSLayoutConstraint+PureLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FAECA0ACDA2336386F9C2006F95EAAB5 /* KZSideDrawerController.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A1A8AA9F0875993027F349A8305B3BF5 /* KZSideDrawerController.bundle */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1149F28E9955B6D4125BC2FCBF1BEFAB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8C2D84E67F29FB75DD89A641F8C7D848;
+			remoteInfo = KZSideDrawerController;
+		};
+		6F8BC8BF63A8910156058C34D92486A5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8C2D84E67F29FB75DD89A641F8C7D848;
+			remoteInfo = KZSideDrawerController;
+		};
+		8C9F1A8BD61D63D7A7A9ADDB83B4D5F7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 89A351B2687AED4B4A7047564DB95A93;
+			remoteInfo = PureLayout;
+		};
+		A6A6E809F60D2EAF2F8358EE1D72D98E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 903E60CE0F5DD545F789C9B8213B32D5;
+			remoteInfo = "KZSideDrawerController-KZSideDrawerController";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		01B056FE48A821CA3D3818E32A4CFEDF /* PureLayout.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = PureLayout.xcconfig; sourceTree = "<group>"; };
+		155A9B9913EB303A3521636FAA9C8BE7 /* Pods-KZSideDrawerController_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-KZSideDrawerController_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
+		249938C44B3C707521E098F2C5086AD9 /* PureLayout.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = PureLayout.modulemap; sourceTree = "<group>"; };
+		256CB866D56B919DA6C9ABF2C32B4D37 /* NSArray+PureLayout.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSArray+PureLayout.h"; path = "PureLayout/PureLayout/NSArray+PureLayout.h"; sourceTree = "<group>"; };
+		261FA9EFC65F5CA2F5CE7AF0D3ACE209 /* PureLayout.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PureLayout.h; path = PureLayout/PureLayout/PureLayout.h; sourceTree = "<group>"; };
+		270394D2515F28A56E24B2A252F071D0 /* Pods-KZSideDrawerController_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-KZSideDrawerController_Example-frameworks.sh"; sourceTree = "<group>"; };
+		2A3CEB7A6AD6E8F1018E777C64D5F946 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2EF56F713EA8ADE99637E947BF89AFCC /* Pods-KZSideDrawerController_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-KZSideDrawerController_Example-resources.sh"; sourceTree = "<group>"; };
+		2F7D472071E15F7DC98E66B5980E1549 /* NSLayoutConstraint+PureLayout.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSLayoutConstraint+PureLayout.h"; path = "PureLayout/PureLayout/NSLayoutConstraint+PureLayout.h"; sourceTree = "<group>"; };
+		38A2E74330E7F03A0176128A76B7D1A2 /* Pods-KZSideDrawerController_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-KZSideDrawerController_Example-acknowledgements.plist"; sourceTree = "<group>"; };
+		3CA85D2D92CF8965772C132D00FD6F96 /* KZSideDrawerController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = KZSideDrawerController.swift; sourceTree = "<group>"; };
+		3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		3F6990C47F02B6691DD4DA9D4504A36B /* ALView+PureLayout.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "ALView+PureLayout.m"; path = "PureLayout/PureLayout/ALView+PureLayout.m"; sourceTree = "<group>"; };
+		4125D7BB00676898B1EDE57967826A1C /* Pods-KZSideDrawerController_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-KZSideDrawerController_Example-umbrella.h"; sourceTree = "<group>"; };
+		49045B6BFA646DE70339C26702DE2774 /* Pods-KZSideDrawerController_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-KZSideDrawerController_Example.modulemap"; sourceTree = "<group>"; };
+		4ACC722225407ABBC66CCC3747A1FE6E /* Pods-KZSideDrawerController_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-KZSideDrawerController_Tests.modulemap"; sourceTree = "<group>"; };
+		5B443F88CFE8AC1B3457DDBDD9D62425 /* KZSideDrawerContainerView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = KZSideDrawerContainerView.swift; sourceTree = "<group>"; };
+		5B859CA7D3A83073EE3A0EFE2138F31B /* PureLayoutDefines.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PureLayoutDefines.h; path = PureLayout/PureLayout/PureLayoutDefines.h; sourceTree = "<group>"; };
+		62FD488738DACC6BD28A4B8007AC9E22 /* NSLayoutConstraint+PureLayout.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSLayoutConstraint+PureLayout.m"; path = "PureLayout/PureLayout/NSLayoutConstraint+PureLayout.m"; sourceTree = "<group>"; };
+		66877DF529007512FDAC5443B425ABEB /* KZSideDrawerController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KZSideDrawerController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		66A17EA450E5E162AE2C70D70A6DFFD8 /* KZSideDrawerController-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "KZSideDrawerController-umbrella.h"; sourceTree = "<group>"; };
+		69DA11EE1178C7E8D683A2B8A6EC1F39 /* KZSideDrawerController-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "KZSideDrawerController-prefix.pch"; sourceTree = "<group>"; };
+		6D986837FA46C6AB4A8D72FCAA1B4454 /* PureLayout-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PureLayout-prefix.pch"; sourceTree = "<group>"; };
+		6EFEA95188E08BEB23065B2AB052E7BC /* PureLayout-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PureLayout-umbrella.h"; sourceTree = "<group>"; };
+		7062B9BFCE93FFBF950FC6967033B498 /* Pods-KZSideDrawerController_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-KZSideDrawerController_Tests-frameworks.sh"; sourceTree = "<group>"; };
+		77632D9CB6FB35531CF251B91EED12C0 /* Pods-KZSideDrawerController_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-KZSideDrawerController_Tests-dummy.m"; sourceTree = "<group>"; };
+		7A8AA681E38B12EB7BD8E8FEEBBC927B /* Pods-KZSideDrawerController_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-KZSideDrawerController_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		7F35B8ADA8DFE079EC6924B666D39E66 /* Pods-KZSideDrawerController_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-KZSideDrawerController_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		808D9E17BE044F47037C6ABD6F65EE32 /* PureLayout-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "PureLayout-dummy.m"; sourceTree = "<group>"; };
+		821A3FB0C30AA6AACB19B7DDE19E2A8A /* Pods-KZSideDrawerController_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-KZSideDrawerController_Tests-resources.sh"; sourceTree = "<group>"; };
+		8EC91BF0524A10A34E99F6CE1FDC4FF1 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8EE68999E3A1EAC1D515ED84A27598C2 /* Pods-KZSideDrawerController_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-KZSideDrawerController_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
+		91A1DBB76862025AF814C6E64A23AE4D /* Pods-KZSideDrawerController_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-KZSideDrawerController_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		9C7E90D028BF1714A3A97E9BD71F83A7 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A069D27E8FF2AA24CBFC684CB8407E63 /* Pods_KZSideDrawerController_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KZSideDrawerController_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A1A8AA9F0875993027F349A8305B3BF5 /* KZSideDrawerController.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KZSideDrawerController.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA654F86E857710B01965E96AC15F25C /* PureLayout+Internal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "PureLayout+Internal.h"; path = "PureLayout/PureLayout/PureLayout+Internal.h"; sourceTree = "<group>"; };
+		BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		BC865655649747E90D9B323808B40EFD /* Pods-KZSideDrawerController_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-KZSideDrawerController_Tests-umbrella.h"; sourceTree = "<group>"; };
+		CC3637271B7D9F54B886AC285CC3D9E7 /* Pods-KZSideDrawerController_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-KZSideDrawerController_Example.release.xcconfig"; sourceTree = "<group>"; };
+		D87500AA33CA4A933595B88AD6CA26C8 /* NSArray+PureLayout.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSArray+PureLayout.m"; path = "PureLayout/PureLayout/NSArray+PureLayout.m"; sourceTree = "<group>"; };
+		DC48A19E2AA264922693A9C30BC30743 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DE8E902078951DE771E046C260EED6B8 /* PureLayout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PureLayout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E126FA66D4797364FF16197B7C699DEA /* Pods_KZSideDrawerController_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KZSideDrawerController_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E2327EA2894AC7A68959A2287B4CD364 /* KZSideDrawerController-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "KZSideDrawerController-dummy.m"; sourceTree = "<group>"; };
+		E2CB7FA8C74B413D21FEFEF7EFBB4E39 /* KZSideDrawerController.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = KZSideDrawerController.modulemap; sourceTree = "<group>"; };
+		E80A3AA0A532C08EADB6EC36F43D0947 /* KZSideDrawerController.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = KZSideDrawerController.xcconfig; sourceTree = "<group>"; };
+		F3D3F05D324772E907DB1D4DA2C89AA2 /* ALView+PureLayout.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "ALView+PureLayout.h"; path = "PureLayout/PureLayout/ALView+PureLayout.h"; sourceTree = "<group>"; };
+		F7C5018AD72BAA6C2A5DCF54F375140C /* Pods-KZSideDrawerController_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-KZSideDrawerController_Example-dummy.m"; sourceTree = "<group>"; };
+		FB000BB16ACDF177947F1CE915E2E657 /* Pods-KZSideDrawerController_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-KZSideDrawerController_Example.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		03D5048978E87790050D9CAB0108A365 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DD0026FD79178F59E730DDE2CAFB0ECA /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3A4C8B53A9D133058DE93366307D4D0A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D911C597DB26AE1732EE1A12C38B29AA /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6A0B2EE1A212385F3C16E3927221DAEF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				89D0DDBAA844BB1E05FECEB56F53A31F /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9BDC48DE4595831875D29FB71FBBD03F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E25BA1E0DAF2710F3B8F658B17E51A32 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				91491743F473E08A46737E41B85B5179 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0B3DA1891F25110356DF43F8518D765C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A1A8AA9F0875993027F349A8305B3BF5 /* KZSideDrawerController.bundle */,
+				66877DF529007512FDAC5443B425ABEB /* KZSideDrawerController.framework */,
+				E126FA66D4797364FF16197B7C699DEA /* Pods_KZSideDrawerController_Example.framework */,
+				A069D27E8FF2AA24CBFC684CB8407E63 /* Pods_KZSideDrawerController_Tests.framework */,
+				DE8E902078951DE771E046C260EED6B8 /* PureLayout.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		24C80064193C1A79745C1506ABD8FA6E /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				ED09980ABF1198FC42F06A588CB5DB99 /* KZSideDrawerController */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+		2779A3046323E9FE8F9DD0B9A444778B /* Pods-KZSideDrawerController_Tests */ = {
+			isa = PBXGroup;
+			children = (
+				2A3CEB7A6AD6E8F1018E777C64D5F946 /* Info.plist */,
+				4ACC722225407ABBC66CCC3747A1FE6E /* Pods-KZSideDrawerController_Tests.modulemap */,
+				7A8AA681E38B12EB7BD8E8FEEBBC927B /* Pods-KZSideDrawerController_Tests-acknowledgements.markdown */,
+				8EE68999E3A1EAC1D515ED84A27598C2 /* Pods-KZSideDrawerController_Tests-acknowledgements.plist */,
+				77632D9CB6FB35531CF251B91EED12C0 /* Pods-KZSideDrawerController_Tests-dummy.m */,
+				7062B9BFCE93FFBF950FC6967033B498 /* Pods-KZSideDrawerController_Tests-frameworks.sh */,
+				821A3FB0C30AA6AACB19B7DDE19E2A8A /* Pods-KZSideDrawerController_Tests-resources.sh */,
+				BC865655649747E90D9B323808B40EFD /* Pods-KZSideDrawerController_Tests-umbrella.h */,
+				91A1DBB76862025AF814C6E64A23AE4D /* Pods-KZSideDrawerController_Tests.debug.xcconfig */,
+				7F35B8ADA8DFE079EC6924B666D39E66 /* Pods-KZSideDrawerController_Tests.release.xcconfig */,
+			);
+			name = "Pods-KZSideDrawerController_Tests";
+			path = "Target Support Files/Pods-KZSideDrawerController_Tests";
+			sourceTree = "<group>";
+		};
+		2F7CB2F8AA04108B4168449AFCA94214 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				DC48A19E2AA264922693A9C30BC30743 /* Info.plist */,
+				249938C44B3C707521E098F2C5086AD9 /* PureLayout.modulemap */,
+				01B056FE48A821CA3D3818E32A4CFEDF /* PureLayout.xcconfig */,
+				808D9E17BE044F47037C6ABD6F65EE32 /* PureLayout-dummy.m */,
+				6D986837FA46C6AB4A8D72FCAA1B4454 /* PureLayout-prefix.pch */,
+				6EFEA95188E08BEB23065B2AB052E7BC /* PureLayout-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/PureLayout";
+			sourceTree = "<group>";
+		};
+		626F9254DEC2BDB738236A5EECC9A808 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				5B443F88CFE8AC1B3457DDBDD9D62425 /* KZSideDrawerContainerView.swift */,
+				3CA85D2D92CF8965772C132D00FD6F96 /* KZSideDrawerController.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		679BBA550C62E4E7B1E35738BD67E93E /* Pods-KZSideDrawerController_Example */ = {
+			isa = PBXGroup;
+			children = (
+				8EC91BF0524A10A34E99F6CE1FDC4FF1 /* Info.plist */,
+				49045B6BFA646DE70339C26702DE2774 /* Pods-KZSideDrawerController_Example.modulemap */,
+				155A9B9913EB303A3521636FAA9C8BE7 /* Pods-KZSideDrawerController_Example-acknowledgements.markdown */,
+				38A2E74330E7F03A0176128A76B7D1A2 /* Pods-KZSideDrawerController_Example-acknowledgements.plist */,
+				F7C5018AD72BAA6C2A5DCF54F375140C /* Pods-KZSideDrawerController_Example-dummy.m */,
+				270394D2515F28A56E24B2A252F071D0 /* Pods-KZSideDrawerController_Example-frameworks.sh */,
+				2EF56F713EA8ADE99637E947BF89AFCC /* Pods-KZSideDrawerController_Example-resources.sh */,
+				4125D7BB00676898B1EDE57967826A1C /* Pods-KZSideDrawerController_Example-umbrella.h */,
+				FB000BB16ACDF177947F1CE915E2E657 /* Pods-KZSideDrawerController_Example.debug.xcconfig */,
+				CC3637271B7D9F54B886AC285CC3D9E7 /* Pods-KZSideDrawerController_Example.release.xcconfig */,
+			);
+			name = "Pods-KZSideDrawerController_Example";
+			path = "Target Support Files/Pods-KZSideDrawerController_Example";
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */,
+				24C80064193C1A79745C1506ABD8FA6E /* Development Pods */,
+				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
+				A2FDD832DA64F35B104DD4C55A31BF8E /* Pods */,
+				0B3DA1891F25110356DF43F8518D765C /* Products */,
+				92EABD328270EF4F7EB59CBBDDE3D2EC /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		92EABD328270EF4F7EB59CBBDDE3D2EC /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				679BBA550C62E4E7B1E35738BD67E93E /* Pods-KZSideDrawerController_Example */,
+				2779A3046323E9FE8F9DD0B9A444778B /* Pods-KZSideDrawerController_Tests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		9C6F93A5AE4A9293598494393460DF93 /* PureLayout */ = {
+			isa = PBXGroup;
+			children = (
+				F3D3F05D324772E907DB1D4DA2C89AA2 /* ALView+PureLayout.h */,
+				3F6990C47F02B6691DD4DA9D4504A36B /* ALView+PureLayout.m */,
+				256CB866D56B919DA6C9ABF2C32B4D37 /* NSArray+PureLayout.h */,
+				D87500AA33CA4A933595B88AD6CA26C8 /* NSArray+PureLayout.m */,
+				2F7D472071E15F7DC98E66B5980E1549 /* NSLayoutConstraint+PureLayout.h */,
+				62FD488738DACC6BD28A4B8007AC9E22 /* NSLayoutConstraint+PureLayout.m */,
+				261FA9EFC65F5CA2F5CE7AF0D3ACE209 /* PureLayout.h */,
+				AA654F86E857710B01965E96AC15F25C /* PureLayout+Internal.h */,
+				5B859CA7D3A83073EE3A0EFE2138F31B /* PureLayoutDefines.h */,
+				2F7CB2F8AA04108B4168449AFCA94214 /* Support Files */,
+			);
+			path = PureLayout;
+			sourceTree = "<group>";
+		};
+		A034C5C4DEC1163DEF051836927B3BAA /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				626F9254DEC2BDB738236A5EECC9A808 /* Classes */,
+			);
+			path = Pod;
+			sourceTree = "<group>";
+		};
+		A2FDD832DA64F35B104DD4C55A31BF8E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9C6F93A5AE4A9293598494393460DF93 /* PureLayout */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BF6342C8B29F4CEEA088EFF7AB4DE362 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BF6342C8B29F4CEEA088EFF7AB4DE362 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		C49B6CFBE867BEF3E9E5BD3491824E63 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				9C7E90D028BF1714A3A97E9BD71F83A7 /* Info.plist */,
+				E2CB7FA8C74B413D21FEFEF7EFBB4E39 /* KZSideDrawerController.modulemap */,
+				E80A3AA0A532C08EADB6EC36F43D0947 /* KZSideDrawerController.xcconfig */,
+				E2327EA2894AC7A68959A2287B4CD364 /* KZSideDrawerController-dummy.m */,
+				69DA11EE1178C7E8D683A2B8A6EC1F39 /* KZSideDrawerController-prefix.pch */,
+				66A17EA450E5E162AE2C70D70A6DFFD8 /* KZSideDrawerController-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/KZSideDrawerController";
+			sourceTree = "<group>";
+		};
+		ED09980ABF1198FC42F06A588CB5DB99 /* KZSideDrawerController */ = {
+			isa = PBXGroup;
+			children = (
+				A034C5C4DEC1163DEF051836927B3BAA /* Pod */,
+				C49B6CFBE867BEF3E9E5BD3491824E63 /* Support Files */,
+			);
+			name = KZSideDrawerController;
+			path = ../..;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		73A66F96816E06BDF8243BE4A4B34EC7 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AF84CE5E1F74301C8526FEFB2284D5C3 /* Pods-KZSideDrawerController_Example-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA4FF766A86D8B210CEC30CB3F31A4FC /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04CC29065AD2A7ABD3C0C8DA39C0F85B /* KZSideDrawerController-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DFC010AC2EEBFBC4F7CCF4B85923F00F /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9651B4BAC831265FBD2062E104C0EA1D /* Pods-KZSideDrawerController_Tests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F3914434FAE38E9D72DED11E590D43E9 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F1351BF919F3383028A6BE4F95F75039 /* ALView+PureLayout.h in Headers */,
+				90B3A4E758B13E566C268D8BF11644C6 /* NSArray+PureLayout.h in Headers */,
+				F8A1CEE9155F464347D2669D50A28767 /* NSLayoutConstraint+PureLayout.h in Headers */,
+				F6B0966B4718B026ED529398A4AE9F43 /* PureLayout+Internal.h in Headers */,
+				2FC50BC0857DBEBDBD202FBCBA0B6E54 /* PureLayout-umbrella.h in Headers */,
+				11440453AE436B6856168211A60B05F7 /* PureLayout.h in Headers */,
+				F3086EB43C8C30C1328598F3D4E511B7 /* PureLayoutDefines.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		2F6C03533193F3F5E035DA3A507BE00F /* Pods-KZSideDrawerController_Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EAB57E687C928A2F1E4675D945B941F1 /* Build configuration list for PBXNativeTarget "Pods-KZSideDrawerController_Tests" */;
+			buildPhases = (
+				1B42C17A47EB125564214618A95B926D /* Sources */,
+				E25BA1E0DAF2710F3B8F658B17E51A32 /* Frameworks */,
+				DFC010AC2EEBFBC4F7CCF4B85923F00F /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7479873E1A2EBE5FEE97FFD636F5B1AE /* PBXTargetDependency */,
+			);
+			name = "Pods-KZSideDrawerController_Tests";
+			productName = "Pods-KZSideDrawerController_Tests";
+			productReference = A069D27E8FF2AA24CBFC684CB8407E63 /* Pods_KZSideDrawerController_Tests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		46FC6092130D2D87D1D87629C1E13206 /* Pods-KZSideDrawerController_Example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D26C2DEDE7DBCC54A9D92DB634D2D3FD /* Build configuration list for PBXNativeTarget "Pods-KZSideDrawerController_Example" */;
+			buildPhases = (
+				797447AB9E4C404B8AD0C6EA0AE74957 /* Sources */,
+				6A0B2EE1A212385F3C16E3927221DAEF /* Frameworks */,
+				73A66F96816E06BDF8243BE4A4B34EC7 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4384FA0D0EBED47150F4FB4944AA1FB5 /* PBXTargetDependency */,
+				32DB4B8C176883D3C2426CEA391CBC5A /* PBXTargetDependency */,
+			);
+			name = "Pods-KZSideDrawerController_Example";
+			productName = "Pods-KZSideDrawerController_Example";
+			productReference = E126FA66D4797364FF16197B7C699DEA /* Pods_KZSideDrawerController_Example.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		89A351B2687AED4B4A7047564DB95A93 /* PureLayout */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2356A65B115471C489FBFB6FFBD391B0 /* Build configuration list for PBXNativeTarget "PureLayout" */;
+			buildPhases = (
+				37B63CDDFC1505413F58CE275FAE162C /* Sources */,
+				3A4C8B53A9D133058DE93366307D4D0A /* Frameworks */,
+				F3914434FAE38E9D72DED11E590D43E9 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PureLayout;
+			productName = PureLayout;
+			productReference = DE8E902078951DE771E046C260EED6B8 /* PureLayout.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		8C2D84E67F29FB75DD89A641F8C7D848 /* KZSideDrawerController */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 67616D20B2D5F82144F77C56CD4ED716 /* Build configuration list for PBXNativeTarget "KZSideDrawerController" */;
+			buildPhases = (
+				A4EF1D29F9EBFC8DBF92F4B68A85D19D /* Sources */,
+				03D5048978E87790050D9CAB0108A365 /* Frameworks */,
+				1AA7A8CC9F57EC02FCCB359E4E438FD3 /* Resources */,
+				AA4FF766A86D8B210CEC30CB3F31A4FC /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				74419AF80EA15F07AB8A8AC2EAB74A35 /* PBXTargetDependency */,
+			);
+			name = KZSideDrawerController;
+			productName = KZSideDrawerController;
+			productReference = 66877DF529007512FDAC5443B425ABEB /* KZSideDrawerController.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		903E60CE0F5DD545F789C9B8213B32D5 /* KZSideDrawerController-KZSideDrawerController */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DB555119656412B124CCC5A1B02DD0D6 /* Build configuration list for PBXNativeTarget "KZSideDrawerController-KZSideDrawerController" */;
+			buildPhases = (
+				A8E9C61C89DD9607169EF94A510F3CF0 /* Sources */,
+				9BDC48DE4595831875D29FB71FBBD03F /* Frameworks */,
+				7656A8A1CCF9ADF7AAB06C13ABCF2F93 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "KZSideDrawerController-KZSideDrawerController";
+			productName = "KZSideDrawerController-KZSideDrawerController";
+			productReference = A1A8AA9F0875993027F349A8305B3BF5 /* KZSideDrawerController.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = 0B3DA1891F25110356DF43F8518D765C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8C2D84E67F29FB75DD89A641F8C7D848 /* KZSideDrawerController */,
+				903E60CE0F5DD545F789C9B8213B32D5 /* KZSideDrawerController-KZSideDrawerController */,
+				46FC6092130D2D87D1D87629C1E13206 /* Pods-KZSideDrawerController_Example */,
+				2F6C03533193F3F5E035DA3A507BE00F /* Pods-KZSideDrawerController_Tests */,
+				89A351B2687AED4B4A7047564DB95A93 /* PureLayout */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1AA7A8CC9F57EC02FCCB359E4E438FD3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FAECA0ACDA2336386F9C2006F95EAAB5 /* KZSideDrawerController.bundle in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7656A8A1CCF9ADF7AAB06C13ABCF2F93 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1B42C17A47EB125564214618A95B926D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D3A03E48A0F69EDB195A65DB2E23547D /* Pods-KZSideDrawerController_Tests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		37B63CDDFC1505413F58CE275FAE162C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0BD65B53FDBDB8675B16F309A810C150 /* ALView+PureLayout.m in Sources */,
+				4ADE0FE88CF47AD551EDCE13569A2EFD /* NSArray+PureLayout.m in Sources */,
+				3D26D5A0D166E49406DE9122C2346684 /* NSLayoutConstraint+PureLayout.m in Sources */,
+				0D69D4AA7DDCC6F7460E01BFC9E813BC /* PureLayout-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		797447AB9E4C404B8AD0C6EA0AE74957 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C872E96BBA6ACC21A2B7F762B35FE010 /* Pods-KZSideDrawerController_Example-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A4EF1D29F9EBFC8DBF92F4B68A85D19D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				716A56993FB59FF543653BA13DA8A56F /* KZSideDrawerContainerView.swift in Sources */,
+				96FCF641ABA16F37D7C8416A99AF94EA /* KZSideDrawerController-dummy.m in Sources */,
+				9CC96236C3B67276339D4CCDE7DD6C46 /* KZSideDrawerController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A8E9C61C89DD9607169EF94A510F3CF0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		32DB4B8C176883D3C2426CEA391CBC5A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = PureLayout;
+			target = 89A351B2687AED4B4A7047564DB95A93 /* PureLayout */;
+			targetProxy = 8C9F1A8BD61D63D7A7A9ADDB83B4D5F7 /* PBXContainerItemProxy */;
+		};
+		4384FA0D0EBED47150F4FB4944AA1FB5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = KZSideDrawerController;
+			target = 8C2D84E67F29FB75DD89A641F8C7D848 /* KZSideDrawerController */;
+			targetProxy = 6F8BC8BF63A8910156058C34D92486A5 /* PBXContainerItemProxy */;
+		};
+		74419AF80EA15F07AB8A8AC2EAB74A35 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "KZSideDrawerController-KZSideDrawerController";
+			target = 903E60CE0F5DD545F789C9B8213B32D5 /* KZSideDrawerController-KZSideDrawerController */;
+			targetProxy = A6A6E809F60D2EAF2F8358EE1D72D98E /* PBXContainerItemProxy */;
+		};
+		7479873E1A2EBE5FEE97FFD636F5B1AE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = KZSideDrawerController;
+			target = 8C2D84E67F29FB75DD89A641F8C7D848 /* KZSideDrawerController */;
+			targetProxy = 1149F28E9955B6D4125BC2FCBF1BEFAB /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		10DE1947DAC0ED28F6C0A9F9BD75D546 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = "RELEASE=1";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		14128DCE511B8A52133D1A2C907D181F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 01B056FE48A821CA3D3818E32A4CFEDF /* PureLayout.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/PureLayout/PureLayout-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/PureLayout/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/PureLayout/PureLayout.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = PureLayout;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		49169333AD2624887D6121072BA003BE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E80A3AA0A532C08EADB6EC36F43D0947 /* KZSideDrawerController.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/KZSideDrawerController/KZSideDrawerController-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/KZSideDrawerController/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/KZSideDrawerController/KZSideDrawerController.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = KZSideDrawerController;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		552D02D5BA751AC2E8790D2811D496CA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				ONLY_ACTIVE_ARCH = YES;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		88E19FD15043A0746FA3C1B305F493C5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CC3637271B7D9F54B886AC285CC3D9E7 /* Pods-KZSideDrawerController_Example.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-KZSideDrawerController_Example/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-KZSideDrawerController_Example/Pods-KZSideDrawerController_Example.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = Pods_KZSideDrawerController_Example;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		8BCE2BDE9BB34E4553853BF7163BB80D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 01B056FE48A821CA3D3818E32A4CFEDF /* PureLayout.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/PureLayout/PureLayout-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/PureLayout/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/PureLayout/PureLayout.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = PureLayout;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		9EBA0FCE217F6D655394A7071FF5E7D1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7F35B8ADA8DFE079EC6924B666D39E66 /* Pods-KZSideDrawerController_Tests.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-KZSideDrawerController_Tests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-KZSideDrawerController_Tests/Pods-KZSideDrawerController_Tests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = Pods_KZSideDrawerController_Tests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		A23AD51984BB0C0467D9F76D681FEA0F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FB000BB16ACDF177947F1CE915E2E657 /* Pods-KZSideDrawerController_Example.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-KZSideDrawerController_Example/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-KZSideDrawerController_Example/Pods-KZSideDrawerController_Example.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = Pods_KZSideDrawerController_Example;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		BCF1CB1B129BEE2272F7F8017053481E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E80A3AA0A532C08EADB6EC36F43D0947 /* KZSideDrawerController.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				PRODUCT_NAME = KZSideDrawerController;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		BD8D88E1E2514B9C874C521CD7051FEC /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E80A3AA0A532C08EADB6EC36F43D0947 /* KZSideDrawerController.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				PRODUCT_NAME = KZSideDrawerController;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
+		D395B8F98F91AA48AB7C993D5BD552C1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E80A3AA0A532C08EADB6EC36F43D0947 /* KZSideDrawerController.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/KZSideDrawerController/KZSideDrawerController-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/KZSideDrawerController/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/KZSideDrawerController/KZSideDrawerController.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = KZSideDrawerController;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		FA1382CCE07E1369CCEC13E6E0640DD2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 91A1DBB76862025AF814C6E64A23AE4D /* Pods-KZSideDrawerController_Tests.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-KZSideDrawerController_Tests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-KZSideDrawerController_Tests/Pods-KZSideDrawerController_Tests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = Pods_KZSideDrawerController_Tests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2356A65B115471C489FBFB6FFBD391B0 /* Build configuration list for PBXNativeTarget "PureLayout" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				14128DCE511B8A52133D1A2C907D181F /* Debug */,
+				8BCE2BDE9BB34E4553853BF7163BB80D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				552D02D5BA751AC2E8790D2811D496CA /* Debug */,
+				10DE1947DAC0ED28F6C0A9F9BD75D546 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		67616D20B2D5F82144F77C56CD4ED716 /* Build configuration list for PBXNativeTarget "KZSideDrawerController" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				49169333AD2624887D6121072BA003BE /* Debug */,
+				D395B8F98F91AA48AB7C993D5BD552C1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D26C2DEDE7DBCC54A9D92DB634D2D3FD /* Build configuration list for PBXNativeTarget "Pods-KZSideDrawerController_Example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A23AD51984BB0C0467D9F76D681FEA0F /* Debug */,
+				88E19FD15043A0746FA3C1B305F493C5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DB555119656412B124CCC5A1B02DD0D6 /* Build configuration list for PBXNativeTarget "KZSideDrawerController-KZSideDrawerController" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BCF1CB1B129BEE2272F7F8017053481E /* Debug */,
+				BD8D88E1E2514B9C874C521CD7051FEC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EAB57E687C928A2F1E4675D945B941F1 /* Build configuration list for PBXNativeTarget "Pods-KZSideDrawerController_Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA1382CCE07E1369CCEC13E6E0640DD2 /* Debug */,
+				9EBA0FCE217F6D655394A7071FF5E7D1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}

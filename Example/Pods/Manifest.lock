@@ -1,0 +1,17 @@
+PODS:
+  - KZSideDrawerController (0.0.1)
+  - PureLayout (3.0.1)
+
+DEPENDENCIES:
+  - KZSideDrawerController (from `../`)
+  - PureLayout
+
+EXTERNAL SOURCES:
+  KZSideDrawerController:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  KZSideDrawerController: 57c044febffc98cf3e7ba9e18b72566b37ce30eb
+  PureLayout: f35f5384c9c4e4479df041dbe33ad7577b71ddfb
+
+COCOAPODS: 0.39.0
