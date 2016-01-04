@@ -326,10 +326,13 @@ public class KZSideDrawerController: UIViewController, UIGestureRecognizerDelega
         }
 
         let sideViewContainer: UIView = sideViewContainerFor(side)
+        let open: Bool = drawerState == .Open
 
         drawerState = .SettlingClosed
 
-        willCloseViewController(sideViewController, forSide: side, animated: animated)
+        if open {
+            willCloseViewController(sideViewController, forSide: side, animated: animated)
+        }
 
         if side == .Left {
             containerView.leftViewSlideOffset = 0
