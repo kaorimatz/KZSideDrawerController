@@ -269,6 +269,12 @@ public class KZSideDrawerController: UIViewController, UIGestureRecognizerDelega
             containerView.rightViewSlideOffset = 1.0
         }
 
+        if #available(iOS 8, *) {
+            // No need to update constraints here in iOS 8 or later
+        } else {
+            containerView.updateConstraintsIfNeeded()
+        }
+
         let animations: () -> Void = {
             self.sideViewContainerFor(side).backgroundColor = self.scrimColorFor(side)
             self.setNeedsStatusBarAppearanceUpdate()
@@ -329,6 +335,12 @@ public class KZSideDrawerController: UIViewController, UIGestureRecognizerDelega
             containerView.leftViewSlideOffset = 0
         } else {
             containerView.rightViewSlideOffset = 0
+        }
+
+        if #available(iOS 8, *) {
+            // No need to update constraints here in iOS 8 or later
+        } else {
+            containerView.updateConstraintsIfNeeded()
         }
 
         let animations: () -> Void = {
