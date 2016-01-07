@@ -43,6 +43,21 @@ extension ViewController: KZSideDrawerControllerDelegate {
 }
 ```
 
+### Customization
+
+- `leftDrawerWidth`
+    - The width of the left drawer. Defaults to 280.0.
+- `rightDrawerWidth`
+    - The width of the right drawer. Defaults to 280.0.
+- `shadowOpacity`
+    - The opacity of the drawer's shadow. Defaults to 0.5.
+- `shadowRadius`
+    - The blur radius of the drawer's shadow. Defaults to 3.0.
+- `shadowOffset`
+    - The offset of the drawer's shadow. Defaults to (0.0, 0.0).
+- `shadowColor`
+    - The color of the drawer's shadow. Defaults to opaque black color.
+
 ## Requirements
 
 - iOS 7.0
