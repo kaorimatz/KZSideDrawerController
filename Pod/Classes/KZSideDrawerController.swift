@@ -246,13 +246,16 @@ public class KZSideDrawerController: UIViewController, UIGestureRecognizerDelega
 
         let sideViewContainer: UIView = sideViewContainerFor(side)
         let closed: Bool = drawerState == .Closed
+        let dragging: Bool = drawerState == .Dragging
 
         drawerState = .SettlingOpen
         currentDrawerSide = side
 
-        if closed {
+        if !(dragging && lastSettledDrawerState == .Closed) {
             willOpenViewController(sideViewController, forSide: side, animated: animated)
+        }
 
+        if closed {
             sideViewContainer.hidden = false
 
             if side == .Left {
@@ -326,11 +329,11 @@ public class KZSideDrawerController: UIViewController, UIGestureRecognizerDelega
         }
 
         let sideViewContainer: UIView = sideViewContainerFor(side)
-        let open: Bool = drawerState == .Open
+        let dragging: Bool = drawerState == .Dragging
 
         drawerState = .SettlingClosed
 
-        if open {
+        if !(dragging && lastSettledDrawerState == .Open) {
             willCloseViewController(sideViewController, forSide: side, animated: animated)
         }
 
