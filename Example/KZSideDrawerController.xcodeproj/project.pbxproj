@@ -10,6 +10,7 @@
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		7C7987013EE8C6A62CDAEAA3 /* Pods_KZSideDrawerController_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72AFFC9DC7C54A5F2B33AAE8 /* Pods_KZSideDrawerController_Example.framework */; };
+		A3A8E78E1C40D15600670D4F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A3A8E78D1C40D15600670D4F /* Main.storyboard */; };
 		A3B44F701C32DA3C000F2C1C /* ExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B44F6F1C32DA3C000F2C1C /* ExampleViewController.swift */; };
 		A3F1AFFF1C3228A500D5CDE4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F1AFFD1C3228A500D5CDE4 /* AppDelegate.swift */; };
 		A3F1B0001C3228A500D5CDE4 /* DrawerSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F1AFFE1C3228A500D5CDE4 /* DrawerSettingsViewController.swift */; };
@@ -40,6 +41,7 @@
 		72AFFC9DC7C54A5F2B33AAE8 /* Pods_KZSideDrawerController_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KZSideDrawerController_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7986CFA414D3F0E52F987382 /* Pods_KZSideDrawerController_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KZSideDrawerController_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E85C4A186B6D9F4C7E0B467 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		A3A8E78D1C40D15600670D4F /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		A3B44F6F1C32DA3C000F2C1C /* ExampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleViewController.swift; sourceTree = "<group>"; };
 		A3F1AFFD1C3228A500D5CDE4 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A3F1AFFE1C3228A500D5CDE4 /* DrawerSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawerSettingsViewController.swift; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 				A3B44F6F1C32DA3C000F2C1C /* ExampleViewController.swift */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
+				A3A8E78D1C40D15600670D4F /* Main.storyboard */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
 			);
 			name = "Example for KZSideDrawerController";
@@ -243,6 +246,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A3A8E78E1C40D15600670D4F /* Main.storyboard in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
 			);

@@ -157,10 +157,12 @@ class ExampleViewController: UIViewController, UITableViewDataSource, UITableVie
         } else if indexPath.row == 9 {
             cell.textLabel?.text = "UIPageViewController"
         } else if indexPath.row == 10 {
-            cell.textLabel?.text = "toggleDrawer(side:animated:)"
+            cell.textLabel?.text = "UIStoryboard"
         } else if indexPath.row == 11 {
-            cell.textLabel?.text = "centerViewController"
+            cell.textLabel?.text = "toggleDrawer(side:animated:)"
         } else if indexPath.row == 12 {
+            cell.textLabel?.text = "centerViewController"
+        } else if indexPath.row == 13 {
             cell.textLabel?.text = "leftViewController"
         } else {
             cell.textLabel?.text = "rightViewController"
@@ -220,16 +222,37 @@ class ExampleViewController: UIViewController, UITableViewDataSource, UITableVie
                 replaceViewControllerAt(position, with: viewController, drawerController: drawerController)
             }
         } else if indexPath.row == 10 {
+            let centerViewController: UIViewController? = drawerController?.centerViewController
+            let leftViewController: UIViewController? = drawerController?.leftViewController
+            let rightViewController: UIViewController? = drawerController?.rightViewController
+            let drawerControllerDelegate: KZSideDrawerControllerDelegate? = drawerController?.delegate
+
+            drawerController?.centerViewController = nil
+            drawerController?.leftViewController = nil
+            drawerController?.rightViewController = nil
+
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let newDrawerController = storyboard.instantiateViewControllerWithIdentifier("SideDrawerController") as! KZSideDrawerController
+
+            newDrawerController.centerViewController = centerViewController
+            newDrawerController.leftViewController = leftViewController
+            newDrawerController.rightViewController = rightViewController
+            newDrawerController.delegate = drawerControllerDelegate
+
+            let window: UIWindow? = UIApplication.sharedApplication().delegate?.window ?? nil
+            window?.rootViewController = newDrawerController
+            window?.makeKeyAndVisible()
+        } else if indexPath.row == 11 {
             drawerController?.toggleDrawer(side: drawerSide ?? .Left, animated: true) { finished in
                 if finished {
                     print("toggleDrawer finished")
                 }
             }
-        } else if indexPath.row == 11 {
+        } else if indexPath.row == 12 {
             if let drawerController = drawerController, position = position where position != .Center {
                 swapViewControllerAt(position, forViewControllerAt: .Center, drawerController: drawerController)
             }
-        } else if indexPath.row == 12 {
+        } else if indexPath.row == 13 {
             if let drawerController = drawerController, position = position where position != .Left {
                 swapViewControllerAt(position, forViewControllerAt: .Left, drawerController: drawerController)
             }
@@ -241,7 +264,7 @@ class ExampleViewController: UIViewController, UITableViewDataSource, UITableVie
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 14
+        return 15
     }
 
     private func detacheViewControllerAt(position: Position, drawerController: KZSideDrawerController) {
