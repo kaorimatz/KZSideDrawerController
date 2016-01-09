@@ -124,7 +124,7 @@ public class KZSideDrawerController: UIViewController, UIGestureRecognizerDelega
 
     // MARK: - Parameters
 
-    public var leftDrawerWidth: CGFloat {
+    @IBInspectable public var leftDrawerWidth: CGFloat {
         get {
             return containerView.leftViewWidth
         }
@@ -133,7 +133,7 @@ public class KZSideDrawerController: UIViewController, UIGestureRecognizerDelega
         }
     }
 
-    public var rightDrawerWidth: CGFloat {
+    @IBInspectable public var rightDrawerWidth: CGFloat {
         get {
             return containerView.rightViewWidth
         }
@@ -142,28 +142,28 @@ public class KZSideDrawerController: UIViewController, UIGestureRecognizerDelega
         }
     }
 
-    public var shadowOpacity: Float = 0.5 {
+    @IBInspectable public var shadowOpacity: Float = 0.5 {
         didSet {
             containerView.leftContainerView.layer.shadowOpacity = shadowOpacity
             containerView.rightContainerView.layer.shadowOpacity = shadowOpacity
         }
     }
 
-    public var shadowRadius: CGFloat = 3 {
+    @IBInspectable public var shadowRadius: CGFloat = 3 {
         didSet {
             containerView.leftContainerView.layer.shadowRadius = shadowRadius
             containerView.rightContainerView.layer.shadowRadius = shadowRadius
         }
     }
 
-    public var shadowOffset: CGSize = CGSize.zero {
+    @IBInspectable public var shadowOffset: CGSize = CGSize.zero {
         didSet {
             containerView.leftContainerView.layer.shadowOffset = shadowOffset
             containerView.rightContainerView.layer.shadowOffset = shadowOffset
         }
     }
 
-    public var shadowColor: UIColor = UIColor.blackColor() {
+    @IBInspectable public var shadowColor: UIColor = UIColor.blackColor() {
         didSet {
             containerView.leftContainerView.layer.shadowColor = shadowColor.CGColor
             containerView.rightContainerView.layer.shadowColor = shadowColor.CGColor
