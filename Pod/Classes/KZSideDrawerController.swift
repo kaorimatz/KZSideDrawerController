@@ -48,7 +48,7 @@ public class KZSideDrawerController: UIViewController, UIGestureRecognizerDelega
         containerView.leftContainerView.layer.shadowOpacity = self.shadowOpacity
         containerView.leftContainerView.layer.shadowRadius = self.shadowRadius
         containerView.leftContainerView.layer.shadowOffset = self.shadowOffset
-        containerView.leftContainerView.layer.shadowColor = self.shadowColor
+        containerView.leftContainerView.layer.shadowColor = self.shadowColor.CGColor
         containerView.leftContainerView.hidden = true
 
         containerView.rightContainerView.addGestureRecognizer(self.rightDrawerCloseOnTapGestureRecognizer)
@@ -56,7 +56,7 @@ public class KZSideDrawerController: UIViewController, UIGestureRecognizerDelega
         containerView.rightContainerView.layer.shadowOpacity = self.shadowOpacity
         containerView.rightContainerView.layer.shadowRadius = self.shadowRadius
         containerView.rightContainerView.layer.shadowOffset = self.shadowOffset
-        containerView.rightContainerView.layer.shadowColor = self.shadowColor
+        containerView.rightContainerView.layer.shadowColor = self.shadowColor.CGColor
         containerView.rightContainerView.hidden = true
 
         return containerView
@@ -163,10 +163,10 @@ public class KZSideDrawerController: UIViewController, UIGestureRecognizerDelega
         }
     }
 
-    public var shadowColor: CGColor = UIColor.blackColor().CGColor {
+    public var shadowColor: UIColor = UIColor.blackColor() {
         didSet {
-            containerView.leftContainerView.layer.shadowColor = shadowColor
-            containerView.rightContainerView.layer.shadowColor = shadowColor
+            containerView.leftContainerView.layer.shadowColor = shadowColor.CGColor
+            containerView.rightContainerView.layer.shadowColor = shadowColor.CGColor
         }
     }
 
