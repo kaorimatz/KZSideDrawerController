@@ -418,6 +418,8 @@ public class KZSideDrawerController: UIViewController, UIGestureRecognizerDelega
             drawerState = .Dragging
             currentDrawerSide = side
 
+            willOpenViewController(sideViewController, forSide: side, animated: true)
+
             sideViewContainerFor(side).hidden = false
             containerView.userInteractionEnabled = false
 
@@ -426,8 +428,6 @@ public class KZSideDrawerController: UIViewController, UIGestureRecognizerDelega
             } else {
                 containerView.rightView = sideViewController.view
             }
-
-            willOpenViewController(sideViewController, forSide: side, animated: true)
 
         case .Changed where drawerState == .Dragging:
             if side == .Left {
