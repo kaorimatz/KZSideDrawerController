@@ -13,8 +13,8 @@ class KZSideDrawerContainerView: UIView {
     // MARK: - Container Views
 
     lazy var centerContainerView: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
+        let view = UIView(frame: self.bounds)
+        view.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
         return view
     }()
 
@@ -25,6 +25,18 @@ class KZSideDrawerContainerView: UIView {
     }()
 
     lazy var rightContainerView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+
+    lazy var leftWrapperView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+
+    lazy var rightWrapperView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -42,45 +54,46 @@ class KZSideDrawerContainerView: UIView {
             }
 
             if let newCenterView = newCenterView {
-                newCenterView.translatesAutoresizingMaskIntoConstraints = false
+                newCenterView.translatesAutoresizingMaskIntoConstraints = true
+                newCenterView.frame = centerContainerView.bounds
+                newCenterView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
                 centerContainerView.addSubview(newCenterView)
-                addConstraintsForCenterView(newCenterView)
             }
         }
     }
 
     var leftView: UIView? {
         get {
-            return leftContainerView.subviews.first
+            return leftWrapperView.subviews.first
         }
         set(newLeftView) {
             if let leftView = leftView {
-                removeConstraintsForLeftView(leftView)
                 leftView.removeFromSuperview()
             }
 
             if let newLeftView = newLeftView {
-                newLeftView.translatesAutoresizingMaskIntoConstraints = false
-                leftContainerView.addSubview(newLeftView)
-                addConstraintsForLeftView(newLeftView)
+                newLeftView.translatesAutoresizingMaskIntoConstraints = true
+                newLeftView.frame = leftWrapperView.bounds
+                newLeftView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
+                leftWrapperView.addSubview(newLeftView)
             }
         }
     }
 
     var rightView: UIView? {
         get {
-            return rightContainerView.subviews.first
+            return rightWrapperView.subviews.first
         }
         set(newRightView) {
             if let rightView = rightView {
-                removeConstraintsForRightView(rightView)
                 rightView.removeFromSuperview()
             }
 
             if let newRightView = newRightView {
-                newRightView.translatesAutoresizingMaskIntoConstraints = false
-                rightContainerView.addSubview(newRightView)
-                addConstraintsForRightView(newRightView)
+                newRightView.translatesAutoresizingMaskIntoConstraints = true
+                newRightView.frame = rightWrapperView.bounds
+                newRightView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
+                rightWrapperView.addSubview(newRightView)
             }
         }
     }
@@ -133,13 +146,6 @@ class KZSideDrawerContainerView: UIView {
 
     // MARK: - Auto Layout Constraints
 
-    private lazy var immutableConstraintsForCenterContainerView: [NSLayoutConstraint] = [
-        NSLayoutConstraint(item: self.centerContainerView, attribute: .Left, relatedBy: .Equal, toItem: self, attribute: .Left, multiplier: 1, constant: 0),
-        NSLayoutConstraint(item: self.centerContainerView, attribute: .Right, relatedBy: .Equal, toItem: self, attribute: .Right, multiplier: 1, constant: 0),
-        NSLayoutConstraint(item: self.centerContainerView, attribute: .Top, relatedBy: .Equal, toItem: self, attribute: .Top, multiplier: 1, constant: 0),
-        NSLayoutConstraint(item: self.centerContainerView, attribute: .Bottom, relatedBy: .Equal, toItem: self, attribute: .Bottom, multiplier: 1, constant: 0),
-    ]
-
     private lazy var immutableConstraintsForLeftContainerView: [NSLayoutConstraint] = [
         NSLayoutConstraint(item: self.leftContainerView, attribute: .Right, relatedBy: .Equal, toItem: self, attribute: .Right, multiplier: 1, constant: 0),
         NSLayoutConstraint(item: self.leftContainerView, attribute: .Top, relatedBy: .Equal, toItem: self, attribute: .Top, multiplier: 1, constant: 0),
@@ -160,9 +166,25 @@ class KZSideDrawerContainerView: UIView {
         NSLayoutConstraint(item: self.rightContainerView, attribute: .Width, relatedBy: .Equal, toItem: self, attribute: .Width, multiplier: 1, constant: self.rightViewClippedWidth)
     }()
 
-    private var widthConstraintForLeftView: NSLayoutConstraint?
+    private lazy var immutableConstraintsForLeftWrapperView: [NSLayoutConstraint] = [
+        NSLayoutConstraint(item: self.leftWrapperView, attribute: .Left, relatedBy: .Equal, toItem: self.leftContainerView, attribute: .Left, multiplier: 1, constant: 0),
+        NSLayoutConstraint(item: self.leftWrapperView, attribute: .Top, relatedBy: .Equal, toItem: self.leftContainerView, attribute: .Top, multiplier: 1, constant: 0),
+        NSLayoutConstraint(item: self.leftWrapperView, attribute: .Bottom, relatedBy: .Equal, toItem: self.leftContainerView, attribute: .Bottom, multiplier: 1, constant: 0),
+    ]
 
-    private var widthConstraintForRightView: NSLayoutConstraint?
+    private lazy var immutableConstraintsForRightWrapperView: [NSLayoutConstraint] = [
+        NSLayoutConstraint(item: self.rightWrapperView, attribute: .Right, relatedBy: .Equal, toItem: self.rightContainerView, attribute: .Right, multiplier: 1, constant: 0),
+        NSLayoutConstraint(item: self.rightWrapperView, attribute: .Top, relatedBy: .Equal, toItem: self.rightContainerView, attribute: .Top, multiplier: 1, constant: 0),
+        NSLayoutConstraint(item: self.rightWrapperView, attribute: .Bottom, relatedBy: .Equal, toItem: self.rightContainerView, attribute: .Bottom, multiplier: 1, constant: 0),
+    ]
+
+    private lazy var widthConstraintForLeftWrapperView: NSLayoutConstraint = {
+        NSLayoutConstraint(item: self.leftWrapperView, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: self.leftViewWidth)
+    }()
+
+    private lazy var widthConstraintForRightWrapperView: NSLayoutConstraint = {
+        NSLayoutConstraint(item: self.rightWrapperView, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: self.rightViewWidth)
+    }()
 
     // MARK: - Initializing
 
@@ -173,9 +195,14 @@ class KZSideDrawerContainerView: UIView {
         addSubview(leftContainerView)
         addSubview(rightContainerView)
 
-        addConstraintsForCenterContainerView()
         addConstraintsForLeftContainerView()
         addConstraintsForRightContainerView()
+
+        leftContainerView.addSubview(leftWrapperView)
+        rightContainerView.addSubview(rightWrapperView)
+
+        addConstraintsForLeftWrapperView()
+        addConstraintsForRightWrapperView()
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -188,50 +215,13 @@ class KZSideDrawerContainerView: UIView {
         widthConstraintForLeftContainerView.constant = leftViewClippedWidth
         widthConstraintForRightContainerView.constant = rightViewClippedWidth
 
-        widthConstraintForLeftView?.constant = leftViewWidth
-        widthConstraintForRightView?.constant = rightViewWidth
+        widthConstraintForLeftWrapperView.constant = leftViewWidth
+        widthConstraintForRightWrapperView.constant = rightViewWidth
 
         super.updateConstraints()
     }
 
     // MARK: - Helpers
-
-    private func immutableConstraintsForCenterView(centerView: UIView) -> [NSLayoutConstraint] {
-        return [
-            NSLayoutConstraint(item: centerView, attribute: .Left, relatedBy: .Equal, toItem: centerContainerView, attribute: .Left, multiplier: 1, constant: 0),
-            NSLayoutConstraint(item: centerView, attribute: .Right, relatedBy: .Equal, toItem: centerContainerView, attribute: .Right, multiplier: 1, constant: 0),
-            NSLayoutConstraint(item: centerView, attribute: .Top, relatedBy: .Equal, toItem: centerContainerView, attribute: .Top, multiplier: 1, constant: 0),
-            NSLayoutConstraint(item: centerView, attribute: .Bottom, relatedBy: .Equal, toItem: centerContainerView, attribute: .Bottom, multiplier: 1, constant: 0),
-        ]
-    }
-
-    private func immutableConstraintsForLeftView(leftView: UIView) -> [NSLayoutConstraint] {
-        return [
-            NSLayoutConstraint(item: leftView, attribute: .Left, relatedBy: .Equal, toItem: leftContainerView, attribute: .Left, multiplier: 1, constant: 0),
-            NSLayoutConstraint(item: leftView, attribute: .Top, relatedBy: .Equal, toItem: leftContainerView, attribute: .Top, multiplier: 1, constant: 0),
-            NSLayoutConstraint(item: leftView, attribute: .Bottom, relatedBy: .Equal, toItem: leftContainerView, attribute: .Bottom, multiplier: 1, constant: 0),
-        ]
-    }
-
-    private func immutableConstraintsForRightView(rightView: UIView) -> [NSLayoutConstraint] {
-        return [
-            NSLayoutConstraint(item: rightView, attribute: .Right, relatedBy: .Equal, toItem: rightContainerView, attribute: .Right, multiplier: 1, constant: 0),
-            NSLayoutConstraint(item: rightView, attribute: .Top, relatedBy: .Equal, toItem: rightContainerView, attribute: .Top, multiplier: 1, constant: 0),
-            NSLayoutConstraint(item: rightView, attribute: .Bottom, relatedBy: .Equal, toItem: rightContainerView, attribute: .Bottom, multiplier: 1, constant: 0),
-        ]
-    }
-
-    private func widthConstraintForLeftView(leftView: UIView) -> NSLayoutConstraint {
-        return NSLayoutConstraint(item: leftView, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: leftViewWidth)
-    }
-
-    private func widthConstraintForRightView(rightView: UIView) -> NSLayoutConstraint {
-        return NSLayoutConstraint(item: rightView, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: rightViewWidth)
-    }
-
-    private func addConstraintsForCenterContainerView() {
-        addConstraints(immutableConstraintsForCenterContainerView)
-    }
 
     private func addConstraintsForLeftContainerView() {
         addConstraints(immutableConstraintsForLeftContainerView)
@@ -243,32 +233,14 @@ class KZSideDrawerContainerView: UIView {
         addConstraint(widthConstraintForRightContainerView)
     }
 
-    private func addConstraintsForCenterView(centerView: UIView) {
-        centerContainerView.addConstraints(immutableConstraintsForCenterView(centerView))
+    private func addConstraintsForLeftWrapperView() {
+        leftContainerView.addConstraints(immutableConstraintsForLeftWrapperView)
+        leftWrapperView.addConstraint(widthConstraintForLeftWrapperView)
     }
 
-    private func addConstraintsForLeftView(leftView: UIView) {
-        leftContainerView.addConstraints(immutableConstraintsForLeftView(leftView))
-        widthConstraintForLeftView = widthConstraintForLeftView(leftView)
-        leftView.addConstraint(widthConstraintForLeftView!)
-    }
-
-    private func addConstraintsForRightView(rightView: UIView) {
-        rightContainerView.addConstraints(immutableConstraintsForRightView(rightView))
-        widthConstraintForRightView = widthConstraintForRightView(rightView)
-        rightView.addConstraint(widthConstraintForRightView!)
-    }
-
-    private func removeConstraintsForLeftView(leftView: UIView) {
-        if let widthConstraintForLeftView = widthConstraintForLeftView {
-            leftView.removeConstraint(widthConstraintForLeftView)
-        }
-    }
-
-    private func removeConstraintsForRightView(rightView: UIView) {
-        if let widthConstraintForRightView = widthConstraintForRightView {
-            rightView.removeConstraint(widthConstraintForRightView)
-        }
+    private func addConstraintsForRightWrapperView() {
+        rightContainerView.addConstraints(immutableConstraintsForRightWrapperView)
+        rightWrapperView.addConstraint(widthConstraintForRightWrapperView)
     }
 
 }

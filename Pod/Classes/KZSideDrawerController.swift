@@ -45,18 +45,18 @@ public class KZSideDrawerController: UIViewController, UIGestureRecognizerDelega
 
         containerView.leftContainerView.addGestureRecognizer(self.leftDrawerCloseOnTapGestureRecognizer)
         containerView.leftContainerView.addGestureRecognizer(self.leftDrawerCloseWithPanGestureRecognizer)
-        containerView.leftContainerView.layer.shadowOpacity = self.shadowOpacity
-        containerView.leftContainerView.layer.shadowRadius = self.shadowRadius
-        containerView.leftContainerView.layer.shadowOffset = self.shadowOffset
-        containerView.leftContainerView.layer.shadowColor = self.shadowColor.CGColor
+        containerView.leftWrapperView.layer.shadowOpacity = self.shadowOpacity
+        containerView.leftWrapperView.layer.shadowRadius = self.shadowRadius
+        containerView.leftWrapperView.layer.shadowOffset = self.shadowOffset
+        containerView.leftWrapperView.layer.shadowColor = self.shadowColor.CGColor
         containerView.leftContainerView.hidden = true
 
         containerView.rightContainerView.addGestureRecognizer(self.rightDrawerCloseOnTapGestureRecognizer)
         containerView.rightContainerView.addGestureRecognizer(self.rightDrawerCloseWithPanGestureRecognizer)
-        containerView.rightContainerView.layer.shadowOpacity = self.shadowOpacity
-        containerView.rightContainerView.layer.shadowRadius = self.shadowRadius
-        containerView.rightContainerView.layer.shadowOffset = self.shadowOffset
-        containerView.rightContainerView.layer.shadowColor = self.shadowColor.CGColor
+        containerView.rightWrapperView.layer.shadowOpacity = self.shadowOpacity
+        containerView.rightWrapperView.layer.shadowRadius = self.shadowRadius
+        containerView.rightWrapperView.layer.shadowOffset = self.shadowOffset
+        containerView.rightWrapperView.layer.shadowColor = self.shadowColor.CGColor
         containerView.rightContainerView.hidden = true
 
         return containerView
@@ -144,29 +144,29 @@ public class KZSideDrawerController: UIViewController, UIGestureRecognizerDelega
 
     @IBInspectable public var shadowOpacity: Float = 0.5 {
         didSet {
-            containerView.leftContainerView.layer.shadowOpacity = shadowOpacity
-            containerView.rightContainerView.layer.shadowOpacity = shadowOpacity
+            containerView.leftWrapperView.layer.shadowOpacity = shadowOpacity
+            containerView.rightWrapperView.layer.shadowOpacity = shadowOpacity
         }
     }
 
     @IBInspectable public var shadowRadius: CGFloat = 3 {
         didSet {
-            containerView.leftContainerView.layer.shadowRadius = shadowRadius
-            containerView.rightContainerView.layer.shadowRadius = shadowRadius
+            containerView.leftWrapperView.layer.shadowRadius = shadowRadius
+            containerView.rightWrapperView.layer.shadowRadius = shadowRadius
         }
     }
 
     @IBInspectable public var shadowOffset: CGSize = CGSize.zero {
         didSet {
-            containerView.leftContainerView.layer.shadowOffset = shadowOffset
-            containerView.rightContainerView.layer.shadowOffset = shadowOffset
+            containerView.leftWrapperView.layer.shadowOffset = shadowOffset
+            containerView.rightWrapperView.layer.shadowOffset = shadowOffset
         }
     }
 
     @IBInspectable public var shadowColor: UIColor = UIColor.blackColor() {
         didSet {
-            containerView.leftContainerView.layer.shadowColor = shadowColor.CGColor
-            containerView.rightContainerView.layer.shadowColor = shadowColor.CGColor
+            containerView.leftWrapperView.layer.shadowColor = shadowColor.CGColor
+            containerView.rightWrapperView.layer.shadowColor = shadowColor.CGColor
         }
     }
 
