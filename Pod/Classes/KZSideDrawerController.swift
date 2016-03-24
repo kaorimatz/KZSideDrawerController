@@ -13,6 +13,13 @@ import UIKit
     case Right
 }
 
+@objc public enum KZPanAnimation: Int {
+    case None
+    case Left
+    case Right
+    case Both
+}
+
 @objc public protocol KZSideDrawerControllerDelegate {
 
     // MARK: - Responding to Side Drawer Controller Events
@@ -170,6 +177,8 @@ public class KZSideDrawerController: UIViewController, UIGestureRecognizerDelega
         }
     }
 
+    public var panAnimationType: KZPanAnimation = .Both
+    
     private var minimumAnimationDuration: NSTimeInterval = 0.1
 
     private var minimumAnimationVelocity: CGFloat = 500
@@ -411,6 +420,14 @@ public class KZSideDrawerController: UIViewController, UIGestureRecognizerDelega
         let velocity: CGPoint = gestureRecognizer.velocityInView(containerView)
         let translation: CGPoint = gestureRecognizer.translationInView(containerView)
 
+        if self.panAnimationType == KZPanAnimation.None {
+            return
+        } else if side == KZDrawerSide.Left && self.panAnimationType == KZPanAnimation.Right {
+            return
+        } else if side == KZDrawerSide.Right && self.panAnimationType == KZPanAnimation.Left {
+            return
+        }
+        
         guard let sideViewController = sideViewControllerFor(side) else { return }
 
         switch (state) {
