@@ -25,10 +25,12 @@ class ExampleViewController: UIViewController, UITableViewDataSource, UITableVie
     }()
 
     private var drawerController: KZSideDrawerController? {
-        for var viewController = parentViewController; viewController != nil; viewController = viewController?.parentViewController {
+        var viewController = parentViewController
+        while viewController != nil {
             if let drawerController = viewController as? KZSideDrawerController {
                 return drawerController
             }
+            viewController = viewController?.parentViewController
         }
         return nil
     }
@@ -67,10 +69,12 @@ class ExampleViewController: UIViewController, UITableViewDataSource, UITableVie
     }
 
     private var pageViewController: UIPageViewController? {
-        for var viewController = parentViewController; viewController != nil; viewController = viewController?.parentViewController {
+        var viewController = parentViewController
+        while viewController != nil {
             if let pageViewController = viewController as? UIPageViewController {
                 return pageViewController
             }
+            viewController = viewController?.parentViewController
         }
         return nil
     }
