@@ -65,7 +65,7 @@ public class KZSideDrawerController: UIViewController, UIGestureRecognizerDelega
     // MARK: - Gesture Recognizers
 
     public private(set) lazy var leftDrawerOpenWithScreenEdgePanGestureRecognizer: UIScreenEdgePanGestureRecognizer = {
-        let gestureRecognizer = UIScreenEdgePanGestureRecognizer(target: self, action: "didRecognizeScreenEdgePanGesture:")
+        let gestureRecognizer = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(didRecognizeScreenEdgePanGesture))
         gestureRecognizer.delegate = self
         gestureRecognizer.edges = UIRectEdge.Left
         gestureRecognizer.maximumNumberOfTouches = 1
@@ -73,7 +73,7 @@ public class KZSideDrawerController: UIViewController, UIGestureRecognizerDelega
     }()
 
     public private(set) lazy var rightDrawerOpenWithScreenEdgePanGestureRecognizer: UIScreenEdgePanGestureRecognizer = {
-        let gestureRecognizer = UIScreenEdgePanGestureRecognizer(target: self, action: "didRecognizeScreenEdgePanGesture:")
+        let gestureRecognizer = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(didRecognizeScreenEdgePanGesture))
         gestureRecognizer.delegate = self
         gestureRecognizer.edges = UIRectEdge.Right
         gestureRecognizer.maximumNumberOfTouches = 1
@@ -81,26 +81,26 @@ public class KZSideDrawerController: UIViewController, UIGestureRecognizerDelega
     }()
 
     public private(set) lazy var leftDrawerCloseOnTapGestureRecognizer: UITapGestureRecognizer = {
-        let gestureRecognizer = UITapGestureRecognizer(target: self, action: "didRecognizeTapGesture:")
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didRecognizeTapGesture))
         gestureRecognizer.delegate = self
         return gestureRecognizer
     }()
 
     public private(set) lazy var rightDrawerCloseOnTapGestureRecognizer: UITapGestureRecognizer = {
-        let gestureRecognizer = UITapGestureRecognizer(target: self, action: "didRecognizeTapGesture:")
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didRecognizeTapGesture))
         gestureRecognizer.delegate = self
         return gestureRecognizer
     }()
 
     public private(set) lazy var leftDrawerCloseWithPanGestureRecognizer: UIPanGestureRecognizer = {
-        let gestureRecognizer = UIPanGestureRecognizer(target: self, action: "didRecognizePanGesture:")
+        let gestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(didRecognizePanGesture))
         gestureRecognizer.delegate = self
         gestureRecognizer.maximumNumberOfTouches = 1
         return gestureRecognizer
     }()
 
     public private(set) lazy var rightDrawerCloseWithPanGestureRecognizer: UIPanGestureRecognizer = {
-        let gestureRecognizer = UIPanGestureRecognizer(target: self, action: "didRecognizePanGesture:")
+        let gestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(didRecognizePanGesture))
         gestureRecognizer.delegate = self
         gestureRecognizer.maximumNumberOfTouches = 1
         return gestureRecognizer
