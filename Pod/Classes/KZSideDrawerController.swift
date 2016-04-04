@@ -8,31 +8,66 @@
 
 import UIKit
 
+/// Constants that specify the side of a drawer.
 @objc public enum KZDrawerSide: Int {
     case Left
     case Right
 }
 
+/// The `KZSideDrawerControllerDelegate` protocol defines optional methods for a delegate of a `KZSideDrawerController` object.
 @objc public protocol KZSideDrawerControllerDelegate {
 
     // MARK: - Responding to Side Drawer Controller Events
 
+    /// Tells the delegate that the drawer is about to be opened.
+    ///
+    /// - parameter sideDrawerController: The side drawer controller.
+    /// - parameter viewController: The view controller whose drawer view is about to be opened.
+    /// - parameter side: The side of the drawer that will be opened.
+    /// - parameter animated: `true` if the opening will be animated, otherwise `false`.
     optional func sideDrawerController(sideDrawerController: KZSideDrawerController, willOpenViewController viewController: UIViewController, forSide side: KZDrawerSide, animated: Bool)
 
+    /// Tells the delegate that the drawer was opened.
+    ///
+    /// - parameter sideDrawerController: The side drawer controller.
+    /// - parameter viewController: The view controller whose drawer view was opened.
+    /// - parameter side: The side of the drawer that was opened.
+    /// - parameter animated: `true` if the opening was animated, otherwise `false`.
     optional func sideDrawerController(sideDrawerController: KZSideDrawerController, didOpenViewController viewController: UIViewController, forSide side: KZDrawerSide, animated: Bool)
 
+    /// Tells the delegate that the drawer is about to be closed.
+    ///
+    /// - parameter sideDrawerController: The side drawer controller.
+    /// - parameter viewController: The view controller whose drawer view is about to be closed.
+    /// - parameter side: The side of the drawer that will be closed.
+    /// - parameter animated: `true` if the closing will be animated, otherwise `false`.
     optional func sideDrawerController(sideDrawerController: KZSideDrawerController, willCloseViewController viewController: UIViewController, forSide side: KZDrawerSide, animated: Bool)
 
+    /// Tells the delegate that the drawer was closed.
+    ///
+    /// - parameter sideDrawerController: The side drawer controller.
+    /// - parameter viewController: The view controller whose drawer view was closed.
+    /// - parameter side: The side of the drawer that was closed.
+    /// - parameter animated: `true` if the closing was animated, otherwise `false`.
     optional func sideDrawerController(sideDrawerController: KZSideDrawerController, didCloseViewController viewController: UIViewController, forSide side: KZDrawerSide, animated: Bool)
 
     // MARK: - Overriding View Rotation Settings
 
+    /// Asks the delegate for the interface orientations that the side drawer controller supports.
+    ///
+    /// - parameter sideDrawerController: The side drawer controller.
+    /// - returns: The bit mask specifying the interface orientations that the side drawer controller supports.
     optional func sideDrawerControllerSupportedInterfaceOrientations(sideDrawerController: KZSideDrawerController) -> UIInterfaceOrientationMask
 
+    /// Asks the delegate for the preferred interface orientation to use when presenting the side drawer controller
+    ///
+    /// - parameter sideDrawerController: The side drawer controller.
+    /// - returns: The preferred interface orientation to use when presenting the side drawer controller.
     optional func sideDrawerControllerPreferredInterfaceOrientationForPresentation(sideDrawerController: KZSideDrawerController) -> UIInterfaceOrientation
 
 }
 
+/// The `KZSideDrawerController` class is a container view controller that manages drawer views.
 public class KZSideDrawerController: UIViewController, UIGestureRecognizerDelegate {
 
     // MARK: - Container View
@@ -64,6 +99,7 @@ public class KZSideDrawerController: UIViewController, UIGestureRecognizerDelega
 
     // MARK: - Gesture Recognizers
 
+    /// The gesture recognizer used to open the left drawer from the left edge of the screen.
     public private(set) lazy var leftDrawerOpenWithScreenEdgePanGestureRecognizer: UIScreenEdgePanGestureRecognizer = {
         let gestureRecognizer = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(didRecognizeScreenEdgePanGesture))
         gestureRecognizer.delegate = self
@@ -72,6 +108,7 @@ public class KZSideDrawerController: UIViewController, UIGestureRecognizerDelega
         return gestureRecognizer
     }()
 
+    /// The gesture recognizer used to open the right drawer from the right edge of the screen.
     public private(set) lazy var rightDrawerOpenWithScreenEdgePanGestureRecognizer: UIScreenEdgePanGestureRecognizer = {
         let gestureRecognizer = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(didRecognizeScreenEdgePanGesture))
         gestureRecognizer.delegate = self
@@ -80,18 +117,21 @@ public class KZSideDrawerController: UIViewController, UIGestureRecognizerDelega
         return gestureRecognizer
     }()
 
+    /// The gesture recognizer used to close the left drawer.
     public private(set) lazy var leftDrawerCloseOnTapGestureRecognizer: UITapGestureRecognizer = {
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didRecognizeTapGesture))
         gestureRecognizer.delegate = self
         return gestureRecognizer
     }()
 
+    /// The gesture recognizer used to close the right drawer.
     public private(set) lazy var rightDrawerCloseOnTapGestureRecognizer: UITapGestureRecognizer = {
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didRecognizeTapGesture))
         gestureRecognizer.delegate = self
         return gestureRecognizer
     }()
 
+    /// The gesture recognizer used to interactively close the left drawer.
     public private(set) lazy var leftDrawerCloseWithPanGestureRecognizer: UIPanGestureRecognizer = {
         let gestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(didRecognizePanGesture))
         gestureRecognizer.delegate = self
@@ -99,6 +139,7 @@ public class KZSideDrawerController: UIViewController, UIGestureRecognizerDelega
         return gestureRecognizer
     }()
 
+    /// The gesture recognizer used to interactively close the right drawer.
     public private(set) lazy var rightDrawerCloseWithPanGestureRecognizer: UIPanGestureRecognizer = {
         let gestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(didRecognizePanGesture))
         gestureRecognizer.delegate = self
@@ -124,6 +165,7 @@ public class KZSideDrawerController: UIViewController, UIGestureRecognizerDelega
 
     // MARK: - Parameters
 
+    /// The width of the left drawer.
     @IBInspectable public var leftDrawerWidth: CGFloat {
         get {
             return containerView.leftViewWidth
@@ -133,6 +175,7 @@ public class KZSideDrawerController: UIViewController, UIGestureRecognizerDelega
         }
     }
 
+    /// The width of the right drawer.
     @IBInspectable public var rightDrawerWidth: CGFloat {
         get {
             return containerView.rightViewWidth
@@ -142,6 +185,7 @@ public class KZSideDrawerController: UIViewController, UIGestureRecognizerDelega
         }
     }
 
+    /// The opacity of the drawer's shadow.
     @IBInspectable public var shadowOpacity: Float = 0.5 {
         didSet {
             containerView.leftWrapperView.layer.shadowOpacity = shadowOpacity
@@ -149,6 +193,7 @@ public class KZSideDrawerController: UIViewController, UIGestureRecognizerDelega
         }
     }
 
+    /// The blur radius of the drawer's shadow.
     @IBInspectable public var shadowRadius: CGFloat = 3 {
         didSet {
             containerView.leftWrapperView.layer.shadowRadius = shadowRadius
@@ -156,6 +201,7 @@ public class KZSideDrawerController: UIViewController, UIGestureRecognizerDelega
         }
     }
 
+    /// The offset of the drawer's shadow.
     @IBInspectable public var shadowOffset: CGSize = CGSize.zero {
         didSet {
             containerView.leftWrapperView.layer.shadowOffset = shadowOffset
@@ -163,6 +209,7 @@ public class KZSideDrawerController: UIViewController, UIGestureRecognizerDelega
         }
     }
 
+    /// The color of the drawer's shadow.
     @IBInspectable public var shadowColor: UIColor = UIColor.blackColor() {
         didSet {
             containerView.leftWrapperView.layer.shadowColor = shadowColor.CGColor
@@ -180,10 +227,12 @@ public class KZSideDrawerController: UIViewController, UIGestureRecognizerDelega
 
     // MARK: - Accessing the Delegate
 
+    /// The delegate of the side drawer controller.
     public weak var delegate: KZSideDrawerControllerDelegate?
 
     // MARK: - Child View Controllers
 
+    /// The center view controller.
     public var centerViewController: UIViewController? {
         didSet(oldCenterViewController) {
             guard oldCenterViewController != centerViewController else { return }
@@ -192,6 +241,7 @@ public class KZSideDrawerController: UIViewController, UIGestureRecognizerDelega
         }
     }
 
+    /// The left view controller.
     public var leftViewController: UIViewController? {
         willSet {
             if newValue == nil {
@@ -205,6 +255,7 @@ public class KZSideDrawerController: UIViewController, UIGestureRecognizerDelega
         }
     }
 
+    /// The right view controller.
     public var rightViewController: UIViewController? {
         willSet {
             if newValue == nil {
@@ -226,6 +277,11 @@ public class KZSideDrawerController: UIViewController, UIGestureRecognizerDelega
 
     // MARK: - Opening and Closing a Drawer
 
+    /// Open the drawer.
+    ///
+    /// - parameter side: The side of the drawer to be opended.
+    /// - parameter animated: Specify `true` to animate the opening of the drawer or `false` to open it immediately.
+    /// - parameter completion: The block to be called when the opening finishes.
     public func openDrawer(side side: KZDrawerSide, animated: Bool, completion: ((Bool) -> Void)?) {
         openDrawer(side: side, velocity: animationVelocity, animated: animated, completion: completion)
     }
@@ -310,6 +366,11 @@ public class KZSideDrawerController: UIViewController, UIGestureRecognizerDelega
         }
     }
 
+    /// Close the drawer.
+    ///
+    /// - parameter side: The side of the drawer to be closed.
+    /// - parameter animated: Specify `true` to animate the closing of the drawer or `false` to close it immediately.
+    /// - parameter completion: The block to be called when the closing finishes.
     public func closeDrawer(side side: KZDrawerSide, animated: Bool, completion: ((Bool) -> Void)?) {
         closeDrawer(side: side, velocity: animationVelocity, animated: animated, completion: completion)
     }
@@ -389,6 +450,11 @@ public class KZSideDrawerController: UIViewController, UIGestureRecognizerDelega
         }
     }
 
+    /// Toggle the drawer.
+    ///
+    /// - parameter side: The side of the drawer to be opened/closed.
+    /// - parameter animated: Specify `true` to animate the opening/closing of the drawer or `false` to open/close it immediately.
+    /// - parameter completion: The block to be called when the opening/closing finishes.
     public func toggleDrawer(side side: KZDrawerSide, animated: Bool, completion: ((Bool) -> Void)?) {
         switch drawerState {
         case .Closed:
