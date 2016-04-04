@@ -381,7 +381,7 @@ public class KZSideDrawerController: UIViewController, UIGestureRecognizerDelega
         closeDrawer(side: side, velocity: animationVelocity, animated: animated, completion: completion)
     }
 
-    public func closeDrawer(side side: KZDrawerSide, velocity: CGFloat, animated: Bool, completion: ((Bool) -> Void)?) {
+    private func closeDrawer(side side: KZDrawerSide, velocity: CGFloat, animated: Bool, completion: ((Bool) -> Void)?) {
         guard drawerState != .Closed else { return }
         guard drawerState != .SettlingOpen else { return }
         guard drawerState != .SettlingClosed else { return }
