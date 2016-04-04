@@ -293,11 +293,10 @@ public class KZSideDrawerController: UIViewController, UIGestureRecognizerDelega
     }
 
     private func openDrawer(side side: KZDrawerSide, velocity: CGFloat, animated: Bool, completion: ((Bool) -> Void)?) {
-        guard drawerState != .Open else { return }
-        guard drawerState != .SettlingOpen else { return }
-        guard drawerState != .SettlingClosed else { return }
-        guard currentDrawerSide == nil || currentDrawerSide == side else { return }
-        guard let sideViewController = sideViewControllerFor(side) else { return }
+        guard let sideViewController = sideViewControllerFor(side) where canOpenDrawerFor(side) else {
+            completion?(false)
+            return
+        }
 
         let distance: CGFloat
         if side == .Left {
@@ -372,6 +371,13 @@ public class KZSideDrawerController: UIViewController, UIGestureRecognizerDelega
         }
     }
 
+    private func canOpenDrawerFor(side: KZDrawerSide) -> Bool {
+        return drawerState != .Open &&
+            drawerState != .SettlingOpen &&
+            drawerState != .SettlingClosed &&
+            (currentDrawerSide == nil || currentDrawerSide == side)
+    }
+
     /// Close the drawer.
     ///
     /// - parameter side: The side of the drawer to be closed.
@@ -382,11 +388,10 @@ public class KZSideDrawerController: UIViewController, UIGestureRecognizerDelega
     }
 
     private func closeDrawer(side side: KZDrawerSide, velocity: CGFloat, animated: Bool, completion: ((Bool) -> Void)?) {
-        guard drawerState != .Closed else { return }
-        guard drawerState != .SettlingOpen else { return }
-        guard drawerState != .SettlingClosed else { return }
-        guard currentDrawerSide == side else { return }
-        guard let sideViewController = sideViewControllerFor(side) else { return }
+        guard let sideViewController = sideViewControllerFor(side) where canCloseDrawerFor(side) else {
+            completion?(false)
+            return
+        }
 
         let distance: CGFloat
         if side == .Left {
@@ -456,6 +461,13 @@ public class KZSideDrawerController: UIViewController, UIGestureRecognizerDelega
         }
     }
 
+    private func canCloseDrawerFor(side: KZDrawerSide) -> Bool {
+        return drawerState != .Closed &&
+            drawerState != .SettlingOpen &&
+            drawerState != .SettlingClosed &&
+            currentDrawerSide == side
+    }
+
     /// Toggle the drawer.
     ///
     /// - parameter side: The side of the drawer to be opened/closed.
@@ -468,7 +480,7 @@ public class KZSideDrawerController: UIViewController, UIGestureRecognizerDelega
         case .Open where side == currentDrawerSide:
             closeDrawer(side: side, animated: animated, completion: completion)
         default:
-            break
+            completion?(false)
         }
     }
 
