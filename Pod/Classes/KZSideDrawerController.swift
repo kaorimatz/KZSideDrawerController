@@ -217,13 +217,19 @@ public class KZSideDrawerController: UIViewController, UIGestureRecognizerDelega
         }
     }
 
+    /// The color used to dim the center view while the drawer is open.
+    @IBInspectable public var dimmingColor: UIColor = UIColor(white: 0, alpha: 0.3) {
+        didSet {
+            containerView.leftContainerView.backgroundColor = dimmingColorFor(.Left)
+            containerView.rightContainerView.backgroundColor = dimmingColorFor(.Right)
+        }
+    }
+
     private var minimumAnimationDuration: NSTimeInterval = 0.1
 
     private var minimumAnimationVelocity: CGFloat = 500
 
     private var animationVelocity: CGFloat = 1000
-
-    private var scrimColor: UIColor = UIColor(white: 0, alpha: 0.3)
 
     // MARK: - Accessing the Delegate
 
@@ -335,7 +341,7 @@ public class KZSideDrawerController: UIViewController, UIGestureRecognizerDelega
         }
 
         let animations: () -> Void = {
-            sideViewContainer.backgroundColor = self.scrimColorFor(side)
+            sideViewContainer.backgroundColor = self.dimmingColorFor(side)
             self.setNeedsStatusBarAppearanceUpdate()
             self.containerView.layoutIfNeeded()
         }
@@ -411,7 +417,7 @@ public class KZSideDrawerController: UIViewController, UIGestureRecognizerDelega
         }
 
         let animations: () -> Void = {
-            sideViewContainer.backgroundColor = self.scrimColorFor(side)
+            sideViewContainer.backgroundColor = self.dimmingColorFor(side)
             self.setNeedsStatusBarAppearanceUpdate()
             self.containerView.layoutIfNeeded()
         }
@@ -504,7 +510,7 @@ public class KZSideDrawerController: UIViewController, UIGestureRecognizerDelega
                 containerView.rightViewSlideOffset = offset
             }
 
-            sideViewContainerFor(side).backgroundColor = scrimColorFor(side)
+            sideViewContainerFor(side).backgroundColor = dimmingColorFor(side)
 
         case .Ended where drawerState == .Dragging, .Cancelled where drawerState == .Dragging:
             let animationVelocity: CGFloat = max(abs(velocity.x), minimumAnimationVelocity)
@@ -575,7 +581,7 @@ public class KZSideDrawerController: UIViewController, UIGestureRecognizerDelega
                 containerView.rightViewSlideOffset = offset
             }
 
-            sideViewContainerFor(side).backgroundColor = scrimColorFor(side)
+            sideViewContainerFor(side).backgroundColor = dimmingColorFor(side)
 
         case .Ended, .Cancelled:
             let animationVelocity: CGFloat = max(abs(velocity.x), minimumAnimationVelocity)
@@ -755,8 +761,8 @@ public class KZSideDrawerController: UIViewController, UIGestureRecognizerDelega
         return side == .Left ? leftViewController : rightViewController
     }
 
-    private func scrimColorFor(side: KZDrawerSide) -> UIColor {
-        return scrimColor.colorWithAlphaComponent(CGColorGetAlpha(scrimColor.CGColor) * slideOffsetFor(side))
+    private func dimmingColorFor(side: KZDrawerSide) -> UIColor {
+        return dimmingColor.colorWithAlphaComponent(CGColorGetAlpha(dimmingColor.CGColor) * slideOffsetFor(side))
     }
 
     private func willOpenViewController(viewController: UIViewController, forSide side: KZDrawerSide, animated: Bool) {

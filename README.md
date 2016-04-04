@@ -57,6 +57,8 @@ extension ViewController: KZSideDrawerControllerDelegate {
     - The offset of the drawer's shadow. Defaults to (0.0, 0.0).
 - `shadowColor`
     - The color of the drawer's shadow. Defaults to opaque black color.
+- `dimmingColor`
+    - The color used to dim the center view while the drawer is open. Defaults to black color with alpha 0.3.
 
 ## Requirements
 
