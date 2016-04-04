@@ -150,13 +150,13 @@ class KZSideDrawerContainerView: UIView {
         NSLayoutConstraint(item: self.leftContainerView, attribute: .Right, relatedBy: .Equal, toItem: self, attribute: .Right, multiplier: 1, constant: 0),
         NSLayoutConstraint(item: self.leftContainerView, attribute: .Top, relatedBy: .Equal, toItem: self, attribute: .Top, multiplier: 1, constant: 0),
         NSLayoutConstraint(item: self.leftContainerView, attribute: .Bottom, relatedBy: .Equal, toItem: self, attribute: .Bottom, multiplier: 1, constant: 0),
-    ]
+        ]
 
     private lazy var immutableConstraintsForRightContainerView: [NSLayoutConstraint] = [
         NSLayoutConstraint(item: self.rightContainerView, attribute: .Left, relatedBy: .Equal, toItem: self, attribute: .Left, multiplier: 1, constant: 0),
         NSLayoutConstraint(item: self.rightContainerView, attribute: .Top, relatedBy: .Equal, toItem: self, attribute: .Top, multiplier: 1, constant: 0),
         NSLayoutConstraint(item: self.rightContainerView, attribute: .Bottom, relatedBy: .Equal, toItem: self, attribute: .Bottom, multiplier: 1, constant: 0),
-    ]
+        ]
 
     private lazy var widthConstraintForLeftContainerView: NSLayoutConstraint = {
         NSLayoutConstraint(item: self.leftContainerView, attribute: .Width, relatedBy: .Equal, toItem: self, attribute: .Width, multiplier: 1, constant: self.leftViewClippedWidth)
@@ -170,13 +170,13 @@ class KZSideDrawerContainerView: UIView {
         NSLayoutConstraint(item: self.leftWrapperView, attribute: .Left, relatedBy: .Equal, toItem: self.leftContainerView, attribute: .Left, multiplier: 1, constant: 0),
         NSLayoutConstraint(item: self.leftWrapperView, attribute: .Top, relatedBy: .Equal, toItem: self.leftContainerView, attribute: .Top, multiplier: 1, constant: 0),
         NSLayoutConstraint(item: self.leftWrapperView, attribute: .Bottom, relatedBy: .Equal, toItem: self.leftContainerView, attribute: .Bottom, multiplier: 1, constant: 0),
-    ]
+        ]
 
     private lazy var immutableConstraintsForRightWrapperView: [NSLayoutConstraint] = [
         NSLayoutConstraint(item: self.rightWrapperView, attribute: .Right, relatedBy: .Equal, toItem: self.rightContainerView, attribute: .Right, multiplier: 1, constant: 0),
         NSLayoutConstraint(item: self.rightWrapperView, attribute: .Top, relatedBy: .Equal, toItem: self.rightContainerView, attribute: .Top, multiplier: 1, constant: 0),
         NSLayoutConstraint(item: self.rightWrapperView, attribute: .Bottom, relatedBy: .Equal, toItem: self.rightContainerView, attribute: .Bottom, multiplier: 1, constant: 0),
-    ]
+        ]
 
     private lazy var widthConstraintForLeftWrapperView: NSLayoutConstraint = {
         NSLayoutConstraint(item: self.leftWrapperView, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: self.leftViewWidth)

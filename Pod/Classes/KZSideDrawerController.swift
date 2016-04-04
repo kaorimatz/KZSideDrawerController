@@ -360,10 +360,10 @@ public class KZSideDrawerController: UIViewController, UIGestureRecognizerDelega
             let animationDuration: NSTimeInterval = max(Double(distance) / Double(abs(velocity)), minimumAnimationDuration)
 
             UIView.animateWithDuration(animationDuration,
-                delay: 0,
-                options: .CurveEaseInOut,
-                animations: animations,
-                completion: completionBlock
+                                       delay: 0,
+                                       options: .CurveEaseInOut,
+                                       animations: animations,
+                                       completion: completionBlock
             )
         } else {
             animations()
@@ -450,10 +450,10 @@ public class KZSideDrawerController: UIViewController, UIGestureRecognizerDelega
             let animationDuration: NSTimeInterval = max(Double(distance) / Double(abs(velocity)), minimumAnimationDuration)
 
             UIView.animateWithDuration(animationDuration,
-                delay: 0,
-                options: .CurveEaseInOut,
-                animations: animations,
-                completion: completionBlock
+                                       delay: 0,
+                                       options: .CurveEaseInOut,
+                                       animations: animations,
+                                       completion: completionBlock
             )
         } else {
             animations()
