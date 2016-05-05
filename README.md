@@ -62,7 +62,8 @@ extension ViewController: KZSideDrawerControllerDelegate {
 
 ## Requirements
 
-- iOS 7.0
+- iOS 7.0+
+- Xcode 7+
 
 ## Installation
 
