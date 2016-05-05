@@ -41,7 +41,7 @@ class DrawerSettingsViewController: UITableViewController {
         slider.minimumValue = 0
         slider.maximumValue = 1
         slider.value = self.shadowOpacity
-        slider.addTarget(self, action: #selector(didChangeShadowOpacity), forControlEvents: .ValueChanged)
+        slider.addTarget(self, action: "didChangeShadowOpacity:", forControlEvents: .ValueChanged)
         return slider
     }()
 
@@ -73,7 +73,7 @@ class DrawerSettingsViewController: UITableViewController {
         let enabledSwitch = UISwitch()
         enabledSwitch.translatesAutoresizingMaskIntoConstraints = false
         enabledSwitch.on = self.leftDrawerEnabled
-        enabledSwitch.addTarget(self, action: #selector(didChangeLeftDrawerEnabled), forControlEvents: .ValueChanged)
+        enabledSwitch.addTarget(self, action: "didChangeLeftDrawerEnabled:", forControlEvents: .ValueChanged)
         return enabledSwitch
     }()
 
@@ -105,7 +105,7 @@ class DrawerSettingsViewController: UITableViewController {
         let enabledSwitch = UISwitch()
         enabledSwitch.translatesAutoresizingMaskIntoConstraints = false
         enabledSwitch.on = self.rightDrawerEnabled
-        enabledSwitch.addTarget(self, action: #selector(didChangeRightDrawerEnabled), forControlEvents: .ValueChanged)
+        enabledSwitch.addTarget(self, action: "didChangeRightDrawerEnabled:", forControlEvents: .ValueChanged)
         return enabledSwitch
     }()
 
@@ -146,7 +146,7 @@ class DrawerSettingsViewController: UITableViewController {
         slider.minimumValue = 0
         slider.maximumValue = Float(self.view.frame.width)
         slider.value = Float(self.leftDrawerWidth)
-        slider.addTarget(self, action: #selector(didChangeLeftDrawerWidth), forControlEvents: .ValueChanged)
+        slider.addTarget(self, action: "didChangeLeftDrawerWidth:", forControlEvents: .ValueChanged)
         return slider
     }()
 
@@ -187,7 +187,7 @@ class DrawerSettingsViewController: UITableViewController {
         slider.minimumValue = 0
         slider.maximumValue = Float(self.view.frame.width)
         slider.value = Float(self.rightDrawerWidth)
-        slider.addTarget(self, action: #selector(didChangeRightDrawerWidth), forControlEvents: .ValueChanged)
+        slider.addTarget(self, action: "didChangeRightDrawerWidth:", forControlEvents: .ValueChanged)
         return slider
     }()
 
@@ -216,10 +216,10 @@ class DrawerSettingsViewController: UITableViewController {
 
         let menuImage = UIImage(named: "ic_menu")
 
-        let leftMenuButtonItem = UIBarButtonItem(image: menuImage, style: .Plain, target: self, action: #selector(didTapLeftMenuButtonItem))
+        let leftMenuButtonItem = UIBarButtonItem(image: menuImage, style: .Plain, target: self, action: "didTapLeftMenuButtonItem:")
         navigationItem.leftBarButtonItem = leftMenuButtonItem
 
-        let rightMenuButtonItem = UIBarButtonItem(image: menuImage, style: .Plain, target: self, action: #selector(didTapRightMenuButtonItem))
+        let rightMenuButtonItem = UIBarButtonItem(image: menuImage, style: .Plain, target: self, action: "didTapRightMenuButtonItem:")
         navigationItem.rightBarButtonItem = rightMenuButtonItem
     }
 
