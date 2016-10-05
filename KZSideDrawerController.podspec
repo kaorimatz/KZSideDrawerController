@@ -27,7 +27,7 @@ KZSideDrawerController is a side drawer controller for iOS written in Swift.
   ]
   s.license          = "MIT"
   s.author           = { "Satoshi Matsumoto" => "kaorimatz@gmail.com" }
-  s.source           = { :git => "https://github.com/kaorimatz/KZSideDrawerController.git", :tag => s.version.to_s }
+  s.source           = { :git => "https://github.com/mariogalijot/KZSideDrawerController", :tag => s.version.to_s }
   # s.social_media_url = "https://twitter.com/<TWITTER_USERNAME>"
 
   s.platform     = :ios, "8.0"
