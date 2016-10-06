@@ -10,8 +10,8 @@ import UIKit
 
 /// Constants that specify the side of a drawer.
 @objc public enum KZDrawerSide: Int {
-    case Left
-    case Right
+    case left
+    case right
 }
 
 /// The `KZSideDrawerControllerDelegate` protocol defines optional methods for a delegate of a `KZSideDrawerController` object.
@@ -25,7 +25,7 @@ import UIKit
     /// - parameter viewController: The view controller whose drawer view is about to be opened.
     /// - parameter side: The side of the drawer that will be opened.
     /// - parameter animated: `true` if the opening will be animated, otherwise `false`.
-    optional func sideDrawerController(sideDrawerController: KZSideDrawerController, willOpenViewController viewController: UIViewController, forSide side: KZDrawerSide, animated: Bool)
+    @objc optional func sideDrawerController(_ sideDrawerController: KZSideDrawerController, willOpenViewController viewController: UIViewController, forSide side: KZDrawerSide, animated: Bool)
 
     /// Tells the delegate that the drawer was opened.
     ///
@@ -33,7 +33,7 @@ import UIKit
     /// - parameter viewController: The view controller whose drawer view was opened.
     /// - parameter side: The side of the drawer that was opened.
     /// - parameter animated: `true` if the opening was animated, otherwise `false`.
-    optional func sideDrawerController(sideDrawerController: KZSideDrawerController, didOpenViewController viewController: UIViewController, forSide side: KZDrawerSide, animated: Bool)
+    @objc optional func sideDrawerController(_ sideDrawerController: KZSideDrawerController, didOpenViewController viewController: UIViewController, forSide side: KZDrawerSide, animated: Bool)
 
     /// Tells the delegate that the drawer is about to be closed.
     ///
@@ -41,7 +41,7 @@ import UIKit
     /// - parameter viewController: The view controller whose drawer view is about to be closed.
     /// - parameter side: The side of the drawer that will be closed.
     /// - parameter animated: `true` if the closing will be animated, otherwise `false`.
-    optional func sideDrawerController(sideDrawerController: KZSideDrawerController, willCloseViewController viewController: UIViewController, forSide side: KZDrawerSide, animated: Bool)
+    @objc optional func sideDrawerController(_ sideDrawerController: KZSideDrawerController, willCloseViewController viewController: UIViewController, forSide side: KZDrawerSide, animated: Bool)
 
     /// Tells the delegate that the drawer was closed.
     ///
@@ -49,7 +49,7 @@ import UIKit
     /// - parameter viewController: The view controller whose drawer view was closed.
     /// - parameter side: The side of the drawer that was closed.
     /// - parameter animated: `true` if the closing was animated, otherwise `false`.
-    optional func sideDrawerController(sideDrawerController: KZSideDrawerController, didCloseViewController viewController: UIViewController, forSide side: KZDrawerSide, animated: Bool)
+    @objc optional func sideDrawerController(_ sideDrawerController: KZSideDrawerController, didCloseViewController viewController: UIViewController, forSide side: KZDrawerSide, animated: Bool)
 
     // MARK: - Overriding View Rotation Settings
 
@@ -57,22 +57,22 @@ import UIKit
     ///
     /// - parameter sideDrawerController: The side drawer controller.
     /// - returns: The bit mask specifying the interface orientations that the side drawer controller supports.
-    optional func sideDrawerControllerSupportedInterfaceOrientations(sideDrawerController: KZSideDrawerController) -> UIInterfaceOrientationMask
+    @objc optional func sideDrawerControllerSupportedInterfaceOrientations(_ sideDrawerController: KZSideDrawerController) -> UIInterfaceOrientationMask
 
     /// Asks the delegate for the preferred interface orientation to use when presenting the side drawer controller
     ///
     /// - parameter sideDrawerController: The side drawer controller.
     /// - returns: The preferred interface orientation to use when presenting the side drawer controller.
-    optional func sideDrawerControllerPreferredInterfaceOrientationForPresentation(sideDrawerController: KZSideDrawerController) -> UIInterfaceOrientation
+    @objc optional func sideDrawerControllerPreferredInterfaceOrientationForPresentation(_ sideDrawerController: KZSideDrawerController) -> UIInterfaceOrientation
 
 }
 
 /// The `KZSideDrawerController` class is a container view controller that manages drawer views.
-public class KZSideDrawerController: UIViewController, UIGestureRecognizerDelegate {
+open class KZSideDrawerController: UIViewController, UIGestureRecognizerDelegate {
 
     // MARK: - Container View
 
-    private lazy var containerView: KZSideDrawerContainerView = {
+    fileprivate lazy var containerView: KZSideDrawerContainerView = {
         let containerView = KZSideDrawerContainerView()
 
         containerView.centerContainerView.addGestureRecognizer(self.leftDrawerOpenWithScreenEdgePanGestureRecognizer)
@@ -83,16 +83,16 @@ public class KZSideDrawerController: UIViewController, UIGestureRecognizerDelega
         containerView.leftWrapperView.layer.shadowOpacity = self.shadowOpacity
         containerView.leftWrapperView.layer.shadowRadius = self.shadowRadius
         containerView.leftWrapperView.layer.shadowOffset = self.shadowOffset
-        containerView.leftWrapperView.layer.shadowColor = self.shadowColor.CGColor
-        containerView.leftContainerView.hidden = true
+        containerView.leftWrapperView.layer.shadowColor = self.shadowColor.cgColor
+        containerView.leftContainerView.isHidden = true
 
         containerView.rightContainerView.addGestureRecognizer(self.rightDrawerCloseOnTapGestureRecognizer)
         containerView.rightContainerView.addGestureRecognizer(self.rightDrawerCloseWithPanGestureRecognizer)
         containerView.rightWrapperView.layer.shadowOpacity = self.shadowOpacity
         containerView.rightWrapperView.layer.shadowRadius = self.shadowRadius
         containerView.rightWrapperView.layer.shadowOffset = self.shadowOffset
-        containerView.rightWrapperView.layer.shadowColor = self.shadowColor.CGColor
-        containerView.rightContainerView.hidden = true
+        containerView.rightWrapperView.layer.shadowColor = self.shadowColor.cgColor
+        containerView.rightContainerView.isHidden = true
 
         return containerView
     }()
@@ -100,48 +100,48 @@ public class KZSideDrawerController: UIViewController, UIGestureRecognizerDelega
     // MARK: - Gesture Recognizers
 
     /// The gesture recognizer used to open the left drawer from the left edge of the screen.
-    public private(set) lazy var leftDrawerOpenWithScreenEdgePanGestureRecognizer: UIScreenEdgePanGestureRecognizer = {
-        let gestureRecognizer = UIScreenEdgePanGestureRecognizer(target: self, action: "didRecognizeScreenEdgePanGesture:")
+    open fileprivate(set) lazy var leftDrawerOpenWithScreenEdgePanGestureRecognizer: UIScreenEdgePanGestureRecognizer = {
+        let gestureRecognizer = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(KZSideDrawerController.didRecognizeScreenEdgePanGesture(_:)))
         gestureRecognizer.delegate = self
-        gestureRecognizer.edges = UIRectEdge.Left
+        gestureRecognizer.edges = UIRectEdge.left
         gestureRecognizer.maximumNumberOfTouches = 1
         return gestureRecognizer
     }()
 
     /// The gesture recognizer used to open the right drawer from the right edge of the screen.
-    public private(set) lazy var rightDrawerOpenWithScreenEdgePanGestureRecognizer: UIScreenEdgePanGestureRecognizer = {
-        let gestureRecognizer = UIScreenEdgePanGestureRecognizer(target: self, action: "didRecognizeScreenEdgePanGesture:")
+    open fileprivate(set) lazy var rightDrawerOpenWithScreenEdgePanGestureRecognizer: UIScreenEdgePanGestureRecognizer = {
+        let gestureRecognizer = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(KZSideDrawerController.didRecognizeScreenEdgePanGesture(_:)))
         gestureRecognizer.delegate = self
-        gestureRecognizer.edges = UIRectEdge.Right
+        gestureRecognizer.edges = UIRectEdge.right
         gestureRecognizer.maximumNumberOfTouches = 1
         return gestureRecognizer
     }()
 
     /// The gesture recognizer used to close the left drawer.
-    public private(set) lazy var leftDrawerCloseOnTapGestureRecognizer: UITapGestureRecognizer = {
-        let gestureRecognizer = UITapGestureRecognizer(target: self, action: "didRecognizeTapGesture:")
+    open fileprivate(set) lazy var leftDrawerCloseOnTapGestureRecognizer: UITapGestureRecognizer = {
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(KZSideDrawerController.didRecognizeTapGesture(_:)))
         gestureRecognizer.delegate = self
         return gestureRecognizer
     }()
 
     /// The gesture recognizer used to close the right drawer.
-    public private(set) lazy var rightDrawerCloseOnTapGestureRecognizer: UITapGestureRecognizer = {
-        let gestureRecognizer = UITapGestureRecognizer(target: self, action: "didRecognizeTapGesture:")
+    open fileprivate(set) lazy var rightDrawerCloseOnTapGestureRecognizer: UITapGestureRecognizer = {
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(KZSideDrawerController.didRecognizeTapGesture(_:)))
         gestureRecognizer.delegate = self
         return gestureRecognizer
     }()
 
     /// The gesture recognizer used to interactively close the left drawer.
-    public private(set) lazy var leftDrawerCloseWithPanGestureRecognizer: UIPanGestureRecognizer = {
-        let gestureRecognizer = UIPanGestureRecognizer(target: self, action: "didRecognizePanGesture:")
+    open fileprivate(set) lazy var leftDrawerCloseWithPanGestureRecognizer: UIPanGestureRecognizer = {
+        let gestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(KZSideDrawerController.didRecognizePanGesture(_:)))
         gestureRecognizer.delegate = self
         gestureRecognizer.maximumNumberOfTouches = 1
         return gestureRecognizer
     }()
 
     /// The gesture recognizer used to interactively close the right drawer.
-    public private(set) lazy var rightDrawerCloseWithPanGestureRecognizer: UIPanGestureRecognizer = {
-        let gestureRecognizer = UIPanGestureRecognizer(target: self, action: "didRecognizePanGesture:")
+    open fileprivate(set) lazy var rightDrawerCloseWithPanGestureRecognizer: UIPanGestureRecognizer = {
+        let gestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(KZSideDrawerController.didRecognizePanGesture(_:)))
         gestureRecognizer.delegate = self
         gestureRecognizer.maximumNumberOfTouches = 1
         return gestureRecognizer
@@ -149,24 +149,24 @@ public class KZSideDrawerController: UIViewController, UIGestureRecognizerDelega
 
     // MARK: - State
 
-    private enum State {
-        case Open
-        case Closed
-        case Dragging
-        case SettlingOpen
-        case SettlingClosed
+    fileprivate enum State {
+        case open
+        case closed
+        case dragging
+        case settlingOpen
+        case settlingClosed
     }
 
-    private var drawerState: State = .Closed
+    fileprivate var drawerState: State = .closed
 
-    private var lastSettledDrawerState: State = .Closed
+    fileprivate var lastSettledDrawerState: State = .closed
 
-    private var currentDrawerSide: KZDrawerSide?
+    fileprivate var currentDrawerSide: KZDrawerSide?
 
     // MARK: - Parameters
 
     /// The width of the left drawer.
-    @IBInspectable public var leftDrawerWidth: CGFloat {
+    @IBInspectable open var leftDrawerWidth: CGFloat {
         get {
             return containerView.leftViewWidth
         }
@@ -176,7 +176,7 @@ public class KZSideDrawerController: UIViewController, UIGestureRecognizerDelega
     }
 
     /// The width of the right drawer.
-    @IBInspectable public var rightDrawerWidth: CGFloat {
+    @IBInspectable open var rightDrawerWidth: CGFloat {
         get {
             return containerView.rightViewWidth
         }
@@ -186,7 +186,7 @@ public class KZSideDrawerController: UIViewController, UIGestureRecognizerDelega
     }
 
     /// The opacity of the drawer's shadow.
-    @IBInspectable public var shadowOpacity: Float = 0.5 {
+    @IBInspectable open var shadowOpacity: Float = 0.5 {
         didSet {
             containerView.leftWrapperView.layer.shadowOpacity = shadowOpacity
             containerView.rightWrapperView.layer.shadowOpacity = shadowOpacity
@@ -194,7 +194,7 @@ public class KZSideDrawerController: UIViewController, UIGestureRecognizerDelega
     }
 
     /// The blur radius of the drawer's shadow.
-    @IBInspectable public var shadowRadius: CGFloat = 3 {
+    @IBInspectable open var shadowRadius: CGFloat = 3 {
         didSet {
             containerView.leftWrapperView.layer.shadowRadius = shadowRadius
             containerView.rightWrapperView.layer.shadowRadius = shadowRadius
@@ -202,7 +202,7 @@ public class KZSideDrawerController: UIViewController, UIGestureRecognizerDelega
     }
 
     /// The offset of the drawer's shadow.
-    @IBInspectable public var shadowOffset: CGSize = CGSize.zero {
+    @IBInspectable open var shadowOffset: CGSize = CGSize.zero {
         didSet {
             containerView.leftWrapperView.layer.shadowOffset = shadowOffset
             containerView.rightWrapperView.layer.shadowOffset = shadowOffset
@@ -210,36 +210,36 @@ public class KZSideDrawerController: UIViewController, UIGestureRecognizerDelega
     }
 
     /// The color of the drawer's shadow.
-    @IBInspectable public var shadowColor: UIColor = UIColor.blackColor() {
+    @IBInspectable open var shadowColor: UIColor = UIColor.black {
         didSet {
-            containerView.leftWrapperView.layer.shadowColor = shadowColor.CGColor
-            containerView.rightWrapperView.layer.shadowColor = shadowColor.CGColor
+            containerView.leftWrapperView.layer.shadowColor = shadowColor.cgColor
+            containerView.rightWrapperView.layer.shadowColor = shadowColor.cgColor
         }
     }
 
     /// The color used to dim the center view while the drawer is open.
-    @IBInspectable public var dimmingColor: UIColor = UIColor(white: 0, alpha: 0.3) {
+    @IBInspectable open var dimmingColor: UIColor = UIColor(white: 0, alpha: 0.3) {
         didSet {
-            containerView.leftContainerView.backgroundColor = dimmingColorFor(.Left)
-            containerView.rightContainerView.backgroundColor = dimmingColorFor(.Right)
+            containerView.leftContainerView.backgroundColor = dimmingColorFor(.left)
+            containerView.rightContainerView.backgroundColor = dimmingColorFor(.right)
         }
     }
 
-    private var minimumAnimationDuration: NSTimeInterval = 0.1
+    fileprivate var minimumAnimationDuration: TimeInterval = 0.1
 
-    private var minimumAnimationVelocity: CGFloat = 500
+    fileprivate var minimumAnimationVelocity: CGFloat = 500
 
-    private var animationVelocity: CGFloat = 1000
+    fileprivate var animationVelocity: CGFloat = 1000
 
     // MARK: - Accessing the Delegate
 
     /// The delegate of the side drawer controller.
-    public weak var delegate: KZSideDrawerControllerDelegate?
+    open weak var delegate: KZSideDrawerControllerDelegate?
 
     // MARK: - Child View Controllers
 
     /// The center view controller.
-    public var centerViewController: UIViewController? {
+    open var centerViewController: UIViewController? {
         didSet(oldCenterViewController) {
             guard oldCenterViewController != centerViewController else { return }
 
@@ -248,36 +248,36 @@ public class KZSideDrawerController: UIViewController, UIGestureRecognizerDelega
     }
 
     /// The left view controller.
-    public var leftViewController: UIViewController? {
+    open var leftViewController: UIViewController? {
         willSet {
             if newValue == nil {
-                closeDrawer(side: .Left, animated: false, completion: nil)
+                closeDrawer(.left, animated: false, completion: nil)
             }
         }
         didSet(oldLeftViewController) {
             guard oldLeftViewController != leftViewController else { return }
 
-            replaceSideViewController(oldLeftViewController, withViewController: leftViewController, side: .Left)
+            replaceSideViewController(oldLeftViewController, withViewController: leftViewController, side: .left)
         }
     }
 
     /// The right view controller.
-    public var rightViewController: UIViewController? {
+    open var rightViewController: UIViewController? {
         willSet {
             if newValue == nil {
-                closeDrawer(side: .Right, animated: false, completion: nil)
+                closeDrawer(.right, animated: false, completion: nil)
             }
         }
         didSet(oldRightViewController) {
             guard oldRightViewController != rightViewController else { return }
 
-            replaceSideViewController(oldRightViewController, withViewController: rightViewController, side: .Right)
+            replaceSideViewController(oldRightViewController, withViewController: rightViewController, side: .right)
         }
     }
 
     // MARK: - Loading a View
 
-    public override func loadView() {
+    open override func loadView() {
         view = containerView
     }
 
@@ -288,38 +288,38 @@ public class KZSideDrawerController: UIViewController, UIGestureRecognizerDelega
     /// - parameter side: The side of the drawer to be opended.
     /// - parameter animated: Specify `true` to animate the opening of the drawer or `false` to open it immediately.
     /// - parameter completion: The block to be called when the opening finishes.
-    public func openDrawer(side side: KZDrawerSide, animated: Bool, completion: ((Bool) -> Void)?) {
-        openDrawer(side: side, velocity: animationVelocity, animated: animated, completion: completion)
+    open func openDrawer(_ side: KZDrawerSide, animated: Bool, completion: ((Bool) -> Void)?) {
+        openDrawer(side, velocity: animationVelocity, animated: animated, completion: completion)
     }
 
-    private func openDrawer(side side: KZDrawerSide, velocity: CGFloat, animated: Bool, completion: ((Bool) -> Void)?) {
-        guard let sideViewController = sideViewControllerFor(side) where canOpenDrawerFor(side) else {
+    fileprivate func openDrawer(_ side: KZDrawerSide, velocity: CGFloat, animated: Bool, completion: ((Bool) -> Void)?) {
+        guard let sideViewController = sideViewControllerFor(side) , canOpenDrawerFor(side) else {
             completion?(false)
             return
         }
 
         let distance: CGFloat
-        if side == .Left {
+        if side == .left {
             distance = (1 - containerView.leftViewSlideOffset) * containerView.leftViewWidth
         } else {
             distance = (1 - containerView.rightViewSlideOffset) * containerView.rightViewWidth
         }
 
         let sideViewContainer: UIView = sideViewContainerFor(side)
-        let closed: Bool = drawerState == .Closed
-        let dragging: Bool = drawerState == .Dragging
+        let closed: Bool = drawerState == .closed
+        let dragging: Bool = drawerState == .dragging
 
-        drawerState = .SettlingOpen
+        drawerState = .settlingOpen
         currentDrawerSide = side
 
-        if !(dragging && lastSettledDrawerState == .Closed) {
+        if !(dragging && lastSettledDrawerState == .closed) {
             willOpenViewController(sideViewController, forSide: side, animated: animated)
         }
 
         if closed {
-            sideViewContainer.hidden = false
+            sideViewContainer.isHidden = false
 
-            if side == .Left {
+            if side == .left {
                 containerView.leftView = sideViewController.view
             } else {
                 containerView.rightView = sideViewController.view
@@ -327,7 +327,7 @@ public class KZSideDrawerController: UIViewController, UIGestureRecognizerDelega
             containerView.layoutIfNeeded()
         }
 
-        if side == .Left {
+        if side == .left {
             containerView.leftViewSlideOffset = 1.0
         } else {
             containerView.rightViewSlideOffset = 1.0
@@ -346,10 +346,10 @@ public class KZSideDrawerController: UIViewController, UIGestureRecognizerDelega
         }
 
         let completionBlock: (Bool) -> Void = { finished in
-            self.drawerState = .Open
-            self.lastSettledDrawerState = .Open
+            self.drawerState = .open
+            self.lastSettledDrawerState = .open
 
-            self.containerView.userInteractionEnabled = true
+            self.containerView.isUserInteractionEnabled = true
 
             self.didOpenViewController(sideViewController, forSide: side, animated: animated)
 
@@ -357,11 +357,11 @@ public class KZSideDrawerController: UIViewController, UIGestureRecognizerDelega
         }
 
         if (animated) {
-            let animationDuration: NSTimeInterval = max(Double(distance) / Double(abs(velocity)), minimumAnimationDuration)
+            let animationDuration: TimeInterval = max(Double(distance) / Double(abs(velocity)), minimumAnimationDuration)
 
-            UIView.animateWithDuration(animationDuration,
+            UIView.animate(withDuration: animationDuration,
                                        delay: 0,
-                                       options: .CurveEaseInOut,
+                                       options: .curveEaseInOut,
                                        animations: animations,
                                        completion: completionBlock
             )
@@ -371,10 +371,10 @@ public class KZSideDrawerController: UIViewController, UIGestureRecognizerDelega
         }
     }
 
-    private func canOpenDrawerFor(side: KZDrawerSide) -> Bool {
-        return drawerState != .Open &&
-            drawerState != .SettlingOpen &&
-            drawerState != .SettlingClosed &&
+    fileprivate func canOpenDrawerFor(_ side: KZDrawerSide) -> Bool {
+        return drawerState != .open &&
+            drawerState != .settlingOpen &&
+            drawerState != .settlingClosed &&
             (currentDrawerSide == nil || currentDrawerSide == side)
     }
 
@@ -383,33 +383,33 @@ public class KZSideDrawerController: UIViewController, UIGestureRecognizerDelega
     /// - parameter side: The side of the drawer to be closed.
     /// - parameter animated: Specify `true` to animate the closing of the drawer or `false` to close it immediately.
     /// - parameter completion: The block to be called when the closing finishes.
-    public func closeDrawer(side side: KZDrawerSide, animated: Bool, completion: ((Bool) -> Void)?) {
-        closeDrawer(side: side, velocity: animationVelocity, animated: animated, completion: completion)
+    open func closeDrawer(_ side: KZDrawerSide, animated: Bool, completion: ((Bool) -> Void)?) {
+        closeDrawer(side, velocity: animationVelocity, animated: animated, completion: completion)
     }
 
-    private func closeDrawer(side side: KZDrawerSide, velocity: CGFloat, animated: Bool, completion: ((Bool) -> Void)?) {
-        guard let sideViewController = sideViewControllerFor(side) where canCloseDrawerFor(side) else {
+    fileprivate func closeDrawer(_ side: KZDrawerSide, velocity: CGFloat, animated: Bool, completion: ((Bool) -> Void)?) {
+        guard let sideViewController = sideViewControllerFor(side) , canCloseDrawerFor(side) else {
             completion?(false)
             return
         }
 
         let distance: CGFloat
-        if side == .Left {
+        if side == .left {
             distance = containerView.leftViewSlideOffset * containerView.leftViewWidth
         } else {
             distance = containerView.rightViewSlideOffset * containerView.rightViewWidth
         }
 
         let sideViewContainer: UIView = sideViewContainerFor(side)
-        let dragging: Bool = drawerState == .Dragging
+        let dragging: Bool = drawerState == .dragging
 
-        drawerState = .SettlingClosed
+        drawerState = .settlingClosed
 
-        if !(dragging && lastSettledDrawerState == .Open) {
+        if !(dragging && lastSettledDrawerState == .open) {
             willCloseViewController(sideViewController, forSide: side, animated: animated)
         }
 
-        if side == .Left {
+        if side == .left {
             containerView.leftViewSlideOffset = 0
         } else {
             containerView.rightViewSlideOffset = 0
@@ -428,18 +428,18 @@ public class KZSideDrawerController: UIViewController, UIGestureRecognizerDelega
         }
 
         let completionBlock: (Bool) -> Void = { finished in
-            self.drawerState = .Closed
-            self.lastSettledDrawerState = .Closed
+            self.drawerState = .closed
+            self.lastSettledDrawerState = .closed
             self.currentDrawerSide = nil
 
-            if side == .Left {
+            if side == .left {
                 self.containerView.leftView = nil
             } else {
                 self.containerView.rightView = nil
             }
 
-            self.containerView.userInteractionEnabled = true
-            sideViewContainer.hidden = true
+            self.containerView.isUserInteractionEnabled = true
+            sideViewContainer.isHidden = true
 
             self.didCloseViewController(sideViewController, forSide: side, animated: animated)
 
@@ -447,11 +447,11 @@ public class KZSideDrawerController: UIViewController, UIGestureRecognizerDelega
         }
 
         if animated {
-            let animationDuration: NSTimeInterval = max(Double(distance) / Double(abs(velocity)), minimumAnimationDuration)
+            let animationDuration: TimeInterval = max(Double(distance) / Double(abs(velocity)), minimumAnimationDuration)
 
-            UIView.animateWithDuration(animationDuration,
+            UIView.animate(withDuration: animationDuration,
                                        delay: 0,
-                                       options: .CurveEaseInOut,
+                                       options: .curveEaseInOut,
                                        animations: animations,
                                        completion: completionBlock
             )
@@ -461,10 +461,10 @@ public class KZSideDrawerController: UIViewController, UIGestureRecognizerDelega
         }
     }
 
-    private func canCloseDrawerFor(side: KZDrawerSide) -> Bool {
-        return drawerState != .Closed &&
-            drawerState != .SettlingOpen &&
-            drawerState != .SettlingClosed &&
+    fileprivate func canCloseDrawerFor(_ side: KZDrawerSide) -> Bool {
+        return drawerState != .closed &&
+            drawerState != .settlingOpen &&
+            drawerState != .settlingClosed &&
             currentDrawerSide == side
     }
 
@@ -473,12 +473,12 @@ public class KZSideDrawerController: UIViewController, UIGestureRecognizerDelega
     /// - parameter side: The side of the drawer to be opened/closed.
     /// - parameter animated: Specify `true` to animate the opening/closing of the drawer or `false` to open/close it immediately.
     /// - parameter completion: The block to be called when the opening/closing finishes.
-    public func toggleDrawer(side side: KZDrawerSide, animated: Bool, completion: ((Bool) -> Void)?) {
+    open func toggleDrawer(_ side: KZDrawerSide, animated: Bool, completion: ((Bool) -> Void)?) {
         switch drawerState {
-        case .Closed:
-            openDrawer(side: side, animated: animated, completion: completion)
-        case .Open where side == currentDrawerSide:
-            closeDrawer(side: side, animated: animated, completion: completion)
+        case .closed:
+            openDrawer(side, animated: animated, completion: completion)
+        case .open where side == currentDrawerSide:
+            closeDrawer(side, animated: animated, completion: completion)
         default:
             completion?(false)
         }
@@ -486,35 +486,35 @@ public class KZSideDrawerController: UIViewController, UIGestureRecognizerDelega
 
     // MARK: - Handling Gesture Recognizers
 
-    final func didRecognizeScreenEdgePanGesture(gestureRecognizer: UIScreenEdgePanGestureRecognizer) {
-        guard drawerState == .Closed || drawerState == .Dragging else { return }
-        guard lastSettledDrawerState == .Closed else { return }
+    final func didRecognizeScreenEdgePanGesture(_ gestureRecognizer: UIScreenEdgePanGestureRecognizer) {
+        guard drawerState == .closed || drawerState == .dragging else { return }
+        guard lastSettledDrawerState == .closed else { return }
 
-        let side: KZDrawerSide = gestureRecognizer == leftDrawerOpenWithScreenEdgePanGestureRecognizer ? .Left : .Right
+        let side: KZDrawerSide = gestureRecognizer == leftDrawerOpenWithScreenEdgePanGestureRecognizer ? .left : .right
         let state: UIGestureRecognizerState = gestureRecognizer.state
-        let velocity: CGPoint = gestureRecognizer.velocityInView(containerView)
-        let translation: CGPoint = gestureRecognizer.translationInView(containerView)
+        let velocity: CGPoint = gestureRecognizer.velocity(in: containerView)
+        let translation: CGPoint = gestureRecognizer.translation(in: containerView)
 
         guard let sideViewController = sideViewControllerFor(side) else { return }
 
         switch (state) {
-        case .Began:
-            drawerState = .Dragging
+        case .began:
+            drawerState = .dragging
             currentDrawerSide = side
 
             willOpenViewController(sideViewController, forSide: side, animated: true)
 
-            sideViewContainerFor(side).hidden = false
-            containerView.userInteractionEnabled = false
+            sideViewContainerFor(side).isHidden = false
+            containerView.isUserInteractionEnabled = false
 
-            if side == .Left {
+            if side == .left {
                 containerView.leftView = sideViewController.view
             } else {
                 containerView.rightView = sideViewController.view
             }
 
-        case .Changed where drawerState == .Dragging:
-            if side == .Left {
+        case .changed where drawerState == .dragging:
+            if side == .left {
                 let offset: CGFloat = max(translation.x, 0) / containerView.leftViewWidth
                 containerView.leftViewSlideOffset = offset
             } else {
@@ -524,17 +524,17 @@ public class KZSideDrawerController: UIViewController, UIGestureRecognizerDelega
 
             sideViewContainerFor(side).backgroundColor = dimmingColorFor(side)
 
-        case .Ended where drawerState == .Dragging, .Cancelled where drawerState == .Dragging:
+        case .ended where drawerState == .dragging, .cancelled where drawerState == .dragging:
             let animationVelocity: CGFloat = max(abs(velocity.x), minimumAnimationVelocity)
 
-            if (velocity.x > 100 && side == .Left) || (velocity.x < -100 && side == .Right) {
-                openDrawer(side: side, velocity: animationVelocity, animated: true, completion: nil)
-            } else if (velocity.x > 100 && side == .Right) || (velocity.x < -100 && side == .Left) {
-                closeDrawer(side: side, velocity: animationVelocity, animated: true, completion: nil)
+            if (velocity.x > 100 && side == .left) || (velocity.x < -100 && side == .right) {
+                openDrawer(side, velocity: animationVelocity, animated: true, completion: nil)
+            } else if (velocity.x > 100 && side == .right) || (velocity.x < -100 && side == .left) {
+                closeDrawer(side, velocity: animationVelocity, animated: true, completion: nil)
             } else if slideOffsetFor(side) > 0.5 {
-                openDrawer(side: side, velocity: animationVelocity, animated: true, completion: nil)
+                openDrawer(side, velocity: animationVelocity, animated: true, completion: nil)
             } else {
-                closeDrawer(side: side, velocity: animationVelocity, animated: true, completion: nil)
+                closeDrawer(side, velocity: animationVelocity, animated: true, completion: nil)
             }
 
         default:
@@ -542,50 +542,50 @@ public class KZSideDrawerController: UIViewController, UIGestureRecognizerDelega
         }
     }
 
-    final func didRecognizeTapGesture(gestureRecognizer: UITapGestureRecognizer) {
-        guard drawerState == .Open else { return }
+    final func didRecognizeTapGesture(_ gestureRecognizer: UITapGestureRecognizer) {
+        guard drawerState == .open else { return }
 
         if gestureRecognizer == leftDrawerCloseOnTapGestureRecognizer {
-            closeDrawer(side: .Left, animated: true, completion: nil)
+            closeDrawer(.left, animated: true, completion: nil)
         } else {
-            closeDrawer(side: .Right, animated: true, completion: nil)
+            closeDrawer(.right, animated: true, completion: nil)
         }
     }
 
-    final func didRecognizePanGesture(gestureRecognizer: UIPanGestureRecognizer) {
-        guard drawerState == .Open || drawerState == .Dragging else { return }
-        guard lastSettledDrawerState == .Open else { return }
+    final func didRecognizePanGesture(_ gestureRecognizer: UIPanGestureRecognizer) {
+        guard drawerState == .open || drawerState == .dragging else { return }
+        guard lastSettledDrawerState == .open else { return }
 
-        let side: KZDrawerSide = gestureRecognizer == leftDrawerCloseWithPanGestureRecognizer ? .Left : .Right
+        let side: KZDrawerSide = gestureRecognizer == leftDrawerCloseWithPanGestureRecognizer ? .left : .right
         let state: UIGestureRecognizerState = gestureRecognizer.state
-        let location: CGPoint = gestureRecognizer.locationInView(containerView)
-        let velocity: CGPoint = gestureRecognizer.velocityInView(containerView)
+        let location: CGPoint = gestureRecognizer.location(in: containerView)
+        let velocity: CGPoint = gestureRecognizer.velocity(in: containerView)
 
         guard let sideViewController = sideViewControllerFor(side) else { return }
 
-        if side == .Left && location.x > containerView.leftViewWidth {
-            gestureRecognizer.setTranslation(CGPoint.zero, inView: containerView)
-        } else if side == .Right && location.x < containerView.frame.width - containerView.rightViewWidth {
-            gestureRecognizer.setTranslation(CGPoint.zero, inView: containerView)
-        } else if drawerState != .Dragging && (side == .Left && velocity.x < 0 || side == .Right && velocity.x > 0) {
-            gestureRecognizer.setTranslation(CGPoint.zero, inView: containerView)
+        if side == .left && location.x > containerView.leftViewWidth {
+            gestureRecognizer.setTranslation(CGPoint.zero, in: containerView)
+        } else if side == .right && location.x < containerView.frame.width - containerView.rightViewWidth {
+            gestureRecognizer.setTranslation(CGPoint.zero, in: containerView)
+        } else if drawerState != .dragging && (side == .left && velocity.x < 0 || side == .right && velocity.x > 0) {
+            gestureRecognizer.setTranslation(CGPoint.zero, in: containerView)
 
-            drawerState = .Dragging
+            drawerState = .dragging
 
             willCloseViewController(sideViewController, forSide: side, animated: true)
 
-            containerView.userInteractionEnabled = false
+            containerView.isUserInteractionEnabled = false
         }
 
-        if drawerState != .Dragging {
+        if drawerState != .dragging {
             return
         }
 
-        let translation: CGPoint = gestureRecognizer.translationInView(containerView)
+        let translation: CGPoint = gestureRecognizer.translation(in: containerView)
 
         switch (state) {
-        case .Changed:
-            if side == .Left {
+        case .changed:
+            if side == .left {
                 let offset: CGFloat = 1 - -min(translation.x, 0) / containerView.leftViewWidth
                 containerView.leftViewSlideOffset = offset
             } else {
@@ -595,17 +595,17 @@ public class KZSideDrawerController: UIViewController, UIGestureRecognizerDelega
 
             sideViewContainerFor(side).backgroundColor = dimmingColorFor(side)
 
-        case .Ended, .Cancelled:
+        case .ended, .cancelled:
             let animationVelocity: CGFloat = max(abs(velocity.x), minimumAnimationVelocity)
 
-            if (velocity.x > 100 && side == .Left) || (velocity.x < -100 && side == .Right) {
-                openDrawer(side: side, velocity: animationVelocity, animated: true, completion: nil)
-            } else if (velocity.x > 100 && side == .Right) || (velocity.x < -100 && side == .Left) {
-                closeDrawer(side: side, velocity: animationVelocity, animated: true, completion: nil)
+            if (velocity.x > 100 && side == .left) || (velocity.x < -100 && side == .right) {
+                openDrawer(side, velocity: animationVelocity, animated: true, completion: nil)
+            } else if (velocity.x > 100 && side == .right) || (velocity.x < -100 && side == .left) {
+                closeDrawer(side, velocity: animationVelocity, animated: true, completion: nil)
             } else if slideOffsetFor(side) > 0.5 {
-                openDrawer(side: side, velocity: animationVelocity, animated: true, completion: nil)
+                openDrawer(side, velocity: animationVelocity, animated: true, completion: nil)
             } else {
-                closeDrawer(side: side, velocity: animationVelocity, animated: true, completion: nil)
+                closeDrawer(side, velocity: animationVelocity, animated: true, completion: nil)
             }
 
         default:
@@ -613,19 +613,19 @@ public class KZSideDrawerController: UIViewController, UIGestureRecognizerDelega
         }
     }
 
-    public func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
-        guard drawerState != .SettlingOpen else { return false }
-        guard drawerState != .SettlingClosed else { return false }
+    open func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        guard drawerState != .settlingOpen else { return false }
+        guard drawerState != .settlingClosed else { return false }
 
         switch gestureRecognizer {
         case leftDrawerOpenWithScreenEdgePanGestureRecognizer:
-            return leftViewController != nil && lastSettledDrawerState == .Closed
+            return leftViewController != nil && lastSettledDrawerState == .closed
         case rightDrawerOpenWithScreenEdgePanGestureRecognizer:
-            return rightViewController != nil && lastSettledDrawerState == .Closed
+            return rightViewController != nil && lastSettledDrawerState == .closed
         case leftDrawerCloseOnTapGestureRecognizer, rightDrawerCloseOnTapGestureRecognizer:
-            return touch.view == gestureRecognizer.view && drawerState == .Open
+            return touch.view == gestureRecognizer.view && drawerState == .open
         case leftDrawerCloseWithPanGestureRecognizer, rightDrawerCloseWithPanGestureRecognizer:
-            return lastSettledDrawerState == .Open
+            return lastSettledDrawerState == .open
         default:
             return false
         }
@@ -633,92 +633,93 @@ public class KZSideDrawerController: UIViewController, UIGestureRecognizerDelega
 
     // MARK: - Managing the Status Bar
 
-    public override func childViewControllerForStatusBarHidden() -> UIViewController? {
-        if let currentDrawerSide = currentDrawerSide where drawerState == .Open || drawerState == .SettlingOpen {
-            return sideViewControllerFor(currentDrawerSide)
-        } else {
-            return centerViewController
-        }
-    }
-
-    public override func childViewControllerForStatusBarStyle() -> UIViewController? {
-        if let currentDrawerSide = currentDrawerSide where drawerState == .Open || drawerState == .SettlingOpen {
-            return sideViewControllerFor(currentDrawerSide)
-        } else {
-            return centerViewController
+    open override var childViewControllerForStatusBarHidden: UIViewController? {
+        get {
+            if let currentDrawerSide = currentDrawerSide , drawerState == .open || drawerState == .settlingOpen {
+                return sideViewControllerFor(currentDrawerSide)
+            } else {
+                return centerViewController
+            }
+     
         }
     }
 
     // MARK: - Managing Child View Controllers
 
-    public override func shouldAutomaticallyForwardAppearanceMethods() -> Bool {
-        return false
+    open override var shouldAutomaticallyForwardAppearanceMethods: Bool {
+        get {
+            return false
+        }
     }
 
     // MARK: - Responding to View Events
 
-    public override func viewWillAppear(animated: Bool) {
+    open override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
         centerViewController?.beginAppearanceTransition(true, animated: animated)
 
-        if let currentDrawerSide = currentDrawerSide where drawerState != .SettlingClosed {
+        if let currentDrawerSide = currentDrawerSide , drawerState != .settlingClosed {
             sideViewControllerFor(currentDrawerSide)?.beginAppearanceTransition(true, animated: animated)
         }
     }
 
-    public override func viewDidAppear(animated: Bool) {
+    open override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
         centerViewController?.endAppearanceTransition()
 
-        if let currentDrawerSide = currentDrawerSide where drawerState != .SettlingClosed {
+        if let currentDrawerSide = currentDrawerSide , drawerState != .settlingClosed {
             sideViewControllerFor(currentDrawerSide)?.endAppearanceTransition()
         }
     }
 
-    public override func viewWillDisappear(animated: Bool) {
+    open override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
 
         centerViewController?.beginAppearanceTransition(false, animated: animated)
 
-        if let currentDrawerSide = currentDrawerSide where drawerState != .SettlingClosed {
+        if let currentDrawerSide = currentDrawerSide , drawerState != .settlingClosed {
             sideViewControllerFor(currentDrawerSide)?.beginAppearanceTransition(false, animated: animated)
         }
     }
 
-    public override func viewDidDisappear(animated: Bool) {
+    open override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
 
         centerViewController?.endAppearanceTransition()
 
-        if let currentDrawerSide = currentDrawerSide where drawerState != .SettlingClosed {
+        if let currentDrawerSide = currentDrawerSide , drawerState != .settlingClosed {
             sideViewControllerFor(currentDrawerSide)?.endAppearanceTransition()
         }
     }
 
     // MARK: - Configuring the View Rotation Settings
-
-    public override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
-        if let orientations = delegate?.sideDrawerControllerSupportedInterfaceOrientations?(self) {
-            return orientations
-        } else {
-            return super.supportedInterfaceOrientations()
+    
+    open override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        get {
+            if let orientations = delegate?.sideDrawerControllerSupportedInterfaceOrientations?(self) {
+                return orientations
+            }
+            return super.supportedInterfaceOrientations
         }
     }
+    
+    open override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
+        get {
+            if let orientations = delegate?.sideDrawerControllerPreferredInterfaceOrientationForPresentation?(self) {
+                return orientations
+            } else {
+                return super.preferredInterfaceOrientationForPresentation
+            }
 
-    public override func preferredInterfaceOrientationForPresentation() -> UIInterfaceOrientation {
-        if let orientations = delegate?.sideDrawerControllerPreferredInterfaceOrientationForPresentation?(self) {
-            return orientations
-        } else {
-            return super.preferredInterfaceOrientationForPresentation()
         }
     }
 
     // MARK: - Helpers
 
-    private func replaceCenterViewController(oldCenterViewController: UIViewController?, withViewController newCenterViewController: UIViewController?) {
-        oldCenterViewController?.willMoveToParentViewController(nil)
+    fileprivate func replaceCenterViewController(_ oldCenterViewController: UIViewController?, withViewController newCenterViewController: UIViewController?) {
+        oldCenterViewController?.willMove(toParentViewController: nil)
         if let newCenterViewController = newCenterViewController {
             addChildViewController(newCenterViewController)
         }
@@ -732,67 +733,67 @@ public class KZSideDrawerController: UIViewController, UIGestureRecognizerDelega
         newCenterViewController?.endAppearanceTransition()
 
         oldCenterViewController?.removeFromParentViewController()
-        newCenterViewController?.didMoveToParentViewController(self)
+        newCenterViewController?.didMove(toParentViewController: self)
     }
 
-    private func replaceSideViewController(oldSideViewController: UIViewController?, withViewController newSideViewController: UIViewController?, side: KZDrawerSide) {
-        oldSideViewController?.willMoveToParentViewController(nil)
+    fileprivate func replaceSideViewController(_ oldSideViewController: UIViewController?, withViewController newSideViewController: UIViewController?, side: KZDrawerSide) {
+        oldSideViewController?.willMove(toParentViewController: nil)
         if let newSideViewController = newSideViewController {
             addChildViewController(newSideViewController)
         }
 
-        if currentDrawerSide == side && drawerState != .SettlingClosed {
+        if currentDrawerSide == side && drawerState != .settlingClosed {
             oldSideViewController?.beginAppearanceTransition(false, animated: false)
             newSideViewController?.beginAppearanceTransition(true, animated: false)
 
-            if side == .Left {
+            if side == .left {
                 containerView.leftView = newSideViewController?.view
             } else {
                 containerView.rightView = newSideViewController?.view
             }
         }
 
-        if currentDrawerSide == side && drawerState != .SettlingClosed {
+        if currentDrawerSide == side && drawerState != .settlingClosed {
             oldSideViewController?.endAppearanceTransition()
             newSideViewController?.endAppearanceTransition()
         }
 
         oldSideViewController?.removeFromParentViewController()
-        newSideViewController?.didMoveToParentViewController(self)
+        newSideViewController?.didMove(toParentViewController: self)
     }
 
-    private func slideOffsetFor(side: KZDrawerSide) -> CGFloat {
-        return side == .Left ? containerView.leftViewSlideOffset : containerView.rightViewSlideOffset
+    fileprivate func slideOffsetFor(_ side: KZDrawerSide) -> CGFloat {
+        return side == .left ? containerView.leftViewSlideOffset : containerView.rightViewSlideOffset
     }
 
-    private func sideViewContainerFor(side: KZDrawerSide) -> UIView {
-        return side == .Left ? containerView.leftContainerView : containerView.rightContainerView
+    fileprivate func sideViewContainerFor(_ side: KZDrawerSide) -> UIView {
+        return side == .left ? containerView.leftContainerView : containerView.rightContainerView
     }
 
-    private func sideViewControllerFor(side: KZDrawerSide) -> UIViewController? {
-        return side == .Left ? leftViewController : rightViewController
+    fileprivate func sideViewControllerFor(_ side: KZDrawerSide) -> UIViewController? {
+        return side == .left ? leftViewController : rightViewController
     }
 
-    private func dimmingColorFor(side: KZDrawerSide) -> UIColor {
-        return dimmingColor.colorWithAlphaComponent(CGColorGetAlpha(dimmingColor.CGColor) * slideOffsetFor(side))
+    fileprivate func dimmingColorFor(_ side: KZDrawerSide) -> UIColor {
+        return dimmingColor.withAlphaComponent(dimmingColor.cgColor.alpha * slideOffsetFor(side))
     }
 
-    private func willOpenViewController(viewController: UIViewController, forSide side: KZDrawerSide, animated: Bool) {
+    fileprivate func willOpenViewController(_ viewController: UIViewController, forSide side: KZDrawerSide, animated: Bool) {
         viewController.beginAppearanceTransition(true, animated: animated)
         delegate?.sideDrawerController?(self, willOpenViewController: viewController, forSide: side, animated: animated)
     }
 
-    private func didOpenViewController(viewController: UIViewController, forSide side: KZDrawerSide, animated: Bool) {
+    fileprivate func didOpenViewController(_ viewController: UIViewController, forSide side: KZDrawerSide, animated: Bool) {
         viewController.endAppearanceTransition()
         delegate?.sideDrawerController?(self, didOpenViewController: viewController, forSide: side, animated: animated)
     }
 
-    private func willCloseViewController(viewController: UIViewController, forSide side: KZDrawerSide, animated: Bool) {
+    fileprivate func willCloseViewController(_ viewController: UIViewController, forSide side: KZDrawerSide, animated: Bool) {
         viewController.beginAppearanceTransition(false, animated: animated)
         delegate?.sideDrawerController?(self, willCloseViewController: viewController, forSide: side, animated: animated)
     }
 
-    private func didCloseViewController(viewController: UIViewController, forSide side: KZDrawerSide, animated: Bool) {
+    fileprivate func didCloseViewController(_ viewController: UIViewController, forSide side: KZDrawerSide, animated: Bool) {
         viewController.endAppearanceTransition()
         delegate?.sideDrawerController?(self, didCloseViewController: viewController, forSide: side, animated: animated)
     }
